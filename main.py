@@ -1,32 +1,53 @@
 # Imports
 import sys
 import pygame
-from button import Button
+
 # Configuration
 pygame.init()
-fps = 60
+fps = 10
 fpsClock = pygame.time.Clock()
-width, height = 640, 480
+width, height = 1920, 1080
 screen = pygame.display.set_mode((width, height))
-font = pygame.font.SysFont('ANGST', 40)
+game_started = False
+font = pygame.font.SysFont('Arial', 40)
 
 
-obj = []
+class Button(pygame.sprite.Sprite):
+    def __init__(self, pos, text, font,fc):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.Surface((100, 50))
+        self.image.fill((0,100,0))
+        self.rect = self.image.get_rect()
+        self.rect.center = (pos[0], pos[1])
+        self.buttonText = font.render(text, True, fc)
+        pygame.draw.rect(self.image,(0,100,0),pygame.Rect(0, 0, width, height))
+        self.image.blit(self.buttonText, [
+            self.rect.width / 2 - self.buttonText.get_rect().width / 2,
+            self.rect.height / 2 - self.buttonText.get_rect().height / 2
+        ])
 
 
 
 
+all_sprites = pygame.sprite.Group()
+st1 = Button([width/2, height/3], 'brat', font, (0,0,0))
+st2 = Button([width/2, height/2], 'brat', font, (0,0,0))
+st3 = Button([width/2, height/1.5], 'brat', font, (0,0,0))
+all_sprites.add(st1)
+all_sprites.add(st2)
+all_sprites.add(st3)
 
-Button(30, 30, 400, 100,obj,font, 'Button One (onePress)', print)
-Button(30, 140, 400, 100,obj,font, 'Button Two (multiPress)', print, True)
-
+clock = pygame.time.Clock()
 while True:
-    screen.fill((20, 20, 20))
+    screen.fill((0, 0, 0))
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-    for object in obj:
-        object.process(screen)
+
+    all_sprites.update()
+    screen.fill((0,0,0))
+    all_sprites.draw(screen)
     pygame.display.flip()
-    fpsClock.tick(fps)
+    clock.tick(60)
