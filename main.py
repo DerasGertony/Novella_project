@@ -1,29 +1,40 @@
 import pygame
+import Teacher
 
 pygame.init()
 
-rhythm_line = ["right", "left", "down", "down", "up"]
-btnEventId = {"right": 1073741903, "left": 1073741904, "down": 1073741905, "up":1073741906}
-task_num = 0
+screen = pygame.display.set_mode((1100,800))
+btnEventId = {"RIGHT": 1073741903, "LEFT": 1073741904, "DOWN": 1073741905, "UP":1073741906}
 
-screen = pygame.display.set_mode((600,300))
+def rhythm_game_start():
+    rhythm_line = ["RIGHT", "LEFT", "DOWN", "DOWN", "UP"] # список клавиш, которые надо нажать
+    task_num = 0
+    
+    teacher = Teacher.Teacher(screen)
 
-#square = pygame.Surface((50,170))
-#square.fill("blue")
+    is_Rhythm_Game_Running = 1
+    while is_Rhythm_Game_Running:
+        pygame.display.update()
 
-is_Rhythm_Game_Running = 1
-while is_Rhythm_Game_Running:
-    pygame.display.update()
+        teacher.show_Next_Symbol(rhythm_line[task_num])
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            is_Rhythm_Game_Running = 0
-            pygame.quit()
-        print("Press ", rhythm_line[task_num])
-        if event.type == pygame.KEYDOWN:
-            if event.key == btnEventId[ rhythm_line[task_num] ]: # нажатая клавиша == ожидаемой клавише
-                print("Cool")
-                task_num+=1
-            else:
-                print("Bad!")
-                #task_num+=1
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                is_Rhythm_Game_Running = 0
+                pygame.quit()
+
+            #Обработка нажатых клавиш
+            if event.type == pygame.KEYDOWN:
+                if event.key == btnEventId[ rhythm_line[task_num] ]: # проверка на условие нажатая клавиша == ожидаемой клавише
+                    print("Cool")
+                    task_num+=1
+
+                    teacher.delete_previous_Symbol()
+                    teacher.show_Next_Symbol(rhythm_line[task_num])
+
+                else:
+                    print("Bad!")
+                    #task_num+=1
+
+
+rhythm_game_start()
