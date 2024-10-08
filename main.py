@@ -7,6 +7,7 @@ WIDTH, HEIGHT = 600, 800
 FPS = 60
 CAR_WIDTH, CAR_HEIGHT = 50, 100
 LANE_WIDTH = WIDTH // 3
+MIN_DISTANCE = 100
 
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
@@ -22,18 +23,24 @@ class Bus:
         self.image.fill(GREEN)
         self.rect = self.image.get_rect(center=(WIDTH // 2, HEIGHT - CAR_HEIGHT))
         self.lane = 1
+        self.target_x = self.rect.x
 
     def move(self):
         keys = pygame.key.get_pressed()
-        # for event in pygame.event.get():
-        # мне не оч нравится что даблкликается но позже добавлю плавность
-        # будто по диагонали начнем двигаться, тогда и мансить можно будет между линий
         if keys[pygame.K_LEFT] and self.lane > 0:
             self.lane -= 1
         if keys[pygame.K_RIGHT] and self.lane < 2:
             self.lane += 1
 
-        self.rect.x = self.lane * LANE_WIDTH + (LANE_WIDTH - CAR_WIDTH) // 2
+        self.target_x = self.lane * LANE_WIDTH + (LANE_WIDTH - CAR_WIDTH) // 2
+
+        if self.rect.x + 5 < self.target_x:
+            self.rect.x += 5
+        elif self.rect.x - 5 > self.target_x:
+            self.rect.x -= 5
+        else:
+            self.rect.x = self.target_x
+
 
     def draw(self):
         screen.blit(self.image, self.rect)
@@ -72,7 +79,8 @@ def main():
 
         if random.randint(1, 40) == 1:  # частота появления машин (чем больше второе число - тем реже)
             lane_choice = random.randint(0, 2)
-            cars.append(Car(lane_choice))
+            if all(abs(car.rect.y + CAR_HEIGHT) >= MIN_DISTANCE for car in cars if car.lane == lane_choice):
+                cars.append(Car(lane_choice))
 
         for car in cars[:]:
             car.update()
