@@ -7,6 +7,7 @@ WIDTH, HEIGHT = 600, 800
 FPS = 60
 CAR_WIDTH, CAR_HEIGHT = 50, 100
 BUS_WIDTH, BUS_HEIGHT = 1.44 * CAR_WIDTH, 1.44 * CAR_HEIGHT
+BUS_SPEED, CAR_SPEED = 5, 7
 LANE_WIDTH = WIDTH // 3
 MIN_DISTANCE = 100
 # пунктирные линии
@@ -42,10 +43,10 @@ class Bus:
         self.target_x = self.lane * LANE_WIDTH + (LANE_WIDTH - BUS_WIDTH) // 2
 
         # насколько быстро автобус меняет свое местоположение по иксу
-        if self.rect.x + 5 < self.target_x:
-            self.rect.x += 5
-        elif self.rect.x - 5 > self.target_x:
-            self.rect.x -= 5
+        if self.rect.x + BUS_SPEED < self.target_x:
+            self.rect.x += BUS_SPEED
+        elif self.rect.x - BUS_SPEED > self.target_x:
+            self.rect.x -= BUS_SPEED
         else:
             self.rect.x = self.target_x
 
@@ -70,7 +71,7 @@ class Car:
         self.lane = lane
 
     def update(self):
-        self.rect.y += 7  # скорость машин, чтобы повысить сложность можем увеличить этот параметр или фпс (переменная)
+        self.rect.y += CAR_SPEED  # скорость машин, чтобы повысить сложность можем увеличить этот параметр или фпс (переменная)
 
     def draw(self):
         screen.blit(self.image, self.rect)
@@ -80,6 +81,8 @@ def main():
     clock = pygame.time.Clock()
     bus = Bus()
     cars = []
+
+    # пунктир
     line_position = -length_line
 
     running = True
@@ -105,7 +108,6 @@ def main():
                 running = False
 
         # отрисовка
-
         screen.fill((90, 90, 90))
 
         for i in range(line_position + distance, HEIGHT + length_line, distance + length_line):
@@ -114,7 +116,7 @@ def main():
             pygame.draw.line(screen, WHITE, [WIDTH // 3 * 2, i - distance],
                              [WIDTH // 3 * 2, i - distance + length_line], 10)
 
-        line_position += 5
+        line_position += 5 # обязательно число, которое делит 10 без остатка
         if line_position == distance:
             line_position = -length_line
 
