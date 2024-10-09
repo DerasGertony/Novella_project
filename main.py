@@ -6,12 +6,16 @@ pygame.init()
 WIDTH, HEIGHT = 600, 800
 FPS = 60
 CAR_WIDTH, CAR_HEIGHT = 50, 100
+BUS_WIDTH, BUS_HEIGHT = 1.44 * CAR_WIDTH, 1.44 * CAR_HEIGHT
 LANE_WIDTH = WIDTH // 3
 MIN_DISTANCE = 100
-OTSTUP = 15 # слева и справа от дороги
+# пунктирные линии
+length_line = HEIGHT // 10
+distance = HEIGHT // length_line * 3
 
 RED = (255, 0, 0)
 GREEN = (0, 128, 0)
+WHITE = (255, 255, 255)
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Гони")
@@ -19,15 +23,12 @@ pygame.display.set_caption("Гони")
 files_cars = ['images/blue_car.png', 'images/red_car.png']
 
 
-# класс максима
+# класс для максима
 class Bus:
     def __init__(self):
-        self.image = pygame.Surface((CAR_WIDTH, CAR_HEIGHT))
-        self.image.fill((0, 255, 0))
-        # self.image = pygame.image.load('images/img_.png').convert()
-        # self.image.set_colorkey((90, 90, 90))
-        self.image = pygame.transform.scale(self.image, (1.3 * CAR_WIDTH, 1.3 * CAR_HEIGHT))
-        self.rect = self.image.get_rect(center=(WIDTH // 2, HEIGHT - CAR_HEIGHT - 10))
+        self.image = pygame.image.load('images/bus.png')
+        self.image = pygame.transform.scale(self.image, (BUS_WIDTH, BUS_HEIGHT))
+        self.rect = self.image.get_rect(center=(WIDTH // 2, HEIGHT - BUS_HEIGHT - 10))
         self.lane = 1
         self.target_x = self.rect.x
 
@@ -38,7 +39,7 @@ class Bus:
         if keys[pygame.K_RIGHT] and self.lane < 2:
             self.lane += 1
 
-        self.target_x = self.lane * LANE_WIDTH + (LANE_WIDTH - CAR_WIDTH) // 2
+        self.target_x = self.lane * LANE_WIDTH + (LANE_WIDTH - BUS_WIDTH) // 2
 
         # насколько быстро автобус меняет свое местоположение по иксу
         if self.rect.x + 5 < self.target_x:
@@ -56,14 +57,12 @@ class Bus:
 # то от чего уворачиваемся
 class Car:
     def __init__(self, lane):
-        # self.image = pygame.Surface((CAR_WIDTH, CAR_HEIGHT))
         koef = random.randint(0, 1)
         self.image = pygame.image.load(files_cars[koef])
         if koef == 0:
-            self.image = pygame.transform.rotozoom(self.image, 0, 0.13)
+            self.image = pygame.transform.rotozoom(self.image, 0, 0.12)
         else:
-            self.image = pygame.transform.rotozoom(self.image, 0, 0.15)
-        # self.image = pygame.transform.scale(self.image, (CAR_WIDTH, CAR_HEIGHT))
+            self.image = pygame.transform.rotozoom(self.image, 0, 0.14)
 
         x_position = lane * LANE_WIDTH + LANE_WIDTH // 2
 
@@ -81,6 +80,7 @@ def main():
     clock = pygame.time.Clock()
     bus = Bus()
     cars = []
+    line_position = -length_line
 
     running = True
     while running:
@@ -107,15 +107,16 @@ def main():
         # отрисовка
 
         screen.fill((90, 90, 90))
-        pygame.draw.rect(screen, GREEN, (0, 0, OTSTUP, HEIGHT))
-        pygame.draw.rect(screen, GREEN, (WIDTH - OTSTUP, 0, WIDTH - OTSTUP, HEIGHT))
-        pygame.draw.line(screen, (255, 255, 255), [OTSTUP, 0], [OTSTUP, HEIGHT], 4)
-        pygame.draw.line(screen, (255, 255, 255), [WIDTH - OTSTUP, 0],
-                         [WIDTH - OTSTUP, HEIGHT], 4)
-        pygame.draw.line(screen, (255, 255, 255), [(WIDTH - OTSTUP * 2) / 3, 0],
-                         [(WIDTH - OTSTUP * 2) / 3, HEIGHT], 4)
-        pygame.draw.line(screen, (255, 255, 255), [(WIDTH - OTSTUP * 2) / 3 * 2, 0],
-                         [(WIDTH - OTSTUP * 2) / 3 * 2, HEIGHT], 4)
+
+        for i in range(line_position + distance, HEIGHT + length_line, distance + length_line):
+            pygame.draw.line(screen, WHITE, [WIDTH // 3, i - distance],
+                             [WIDTH // 3, i - distance + length_line], 10)
+            pygame.draw.line(screen, WHITE, [WIDTH // 3 * 2, i - distance],
+                             [WIDTH // 3 * 2, i - distance + length_line], 10)
+
+        line_position += 5
+        if line_position == distance:
+            line_position = -length_line
 
         bus.draw()
         for car in cars:
