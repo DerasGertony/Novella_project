@@ -8,20 +8,26 @@ FPS = 60
 CAR_WIDTH, CAR_HEIGHT = 50, 100
 LANE_WIDTH = WIDTH // 3
 MIN_DISTANCE = 100
+OTSTUP = 15 # слева и справа от дороги
 
 RED = (255, 0, 0)
-GREEN = (0, 255, 0)
+GREEN = (0, 128, 0)
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Гони")
+
+files_cars = ['images/blue_car.png', 'images/red_car.png']
 
 
 # класс максима
 class Bus:
     def __init__(self):
         self.image = pygame.Surface((CAR_WIDTH, CAR_HEIGHT))
-        self.image.fill(GREEN)
-        self.rect = self.image.get_rect(center=(WIDTH // 2, HEIGHT - CAR_HEIGHT))
+        self.image.fill((0, 255, 0))
+        # self.image = pygame.image.load('images/img_.png').convert()
+        # self.image.set_colorkey((90, 90, 90))
+        self.image = pygame.transform.scale(self.image, (1.3 * CAR_WIDTH, 1.3 * CAR_HEIGHT))
+        self.rect = self.image.get_rect(center=(WIDTH // 2, HEIGHT - CAR_HEIGHT - 10))
         self.lane = 1
         self.target_x = self.rect.x
 
@@ -34,6 +40,7 @@ class Bus:
 
         self.target_x = self.lane * LANE_WIDTH + (LANE_WIDTH - CAR_WIDTH) // 2
 
+        # насколько быстро автобус меняет свое местоположение по иксу
         if self.rect.x + 5 < self.target_x:
             self.rect.x += 5
         elif self.rect.x - 5 > self.target_x:
@@ -49,8 +56,14 @@ class Bus:
 # то от чего уворачиваемся
 class Car:
     def __init__(self, lane):
-        self.image = pygame.Surface((CAR_WIDTH, CAR_HEIGHT))
-        self.image.fill(RED)
+        # self.image = pygame.Surface((CAR_WIDTH, CAR_HEIGHT))
+        koef = random.randint(0, 1)
+        self.image = pygame.image.load(files_cars[koef])
+        if koef == 0:
+            self.image = pygame.transform.rotozoom(self.image, 0, 0.13)
+        else:
+            self.image = pygame.transform.rotozoom(self.image, 0, 0.15)
+        # self.image = pygame.transform.scale(self.image, (CAR_WIDTH, CAR_HEIGHT))
 
         x_position = lane * LANE_WIDTH + LANE_WIDTH // 2
 
@@ -58,7 +71,7 @@ class Car:
         self.lane = lane
 
     def update(self):
-        self.rect.y += 5  # скорость машин, чтобы повысить сложность можем увеличить этот параметр или фпс (переменная)
+        self.rect.y += 7  # скорость машин, чтобы повысить сложность можем увеличить этот параметр или фпс (переменная)
 
     def draw(self):
         screen.blit(self.image, self.rect)
@@ -91,7 +104,19 @@ def main():
             if bus.rect.colliderect(car.rect):
                 running = False
 
-        screen.fill((255, 255, 255))
+        # отрисовка
+
+        screen.fill((90, 90, 90))
+        pygame.draw.rect(screen, GREEN, (0, 0, OTSTUP, HEIGHT))
+        pygame.draw.rect(screen, GREEN, (WIDTH - OTSTUP, 0, WIDTH - OTSTUP, HEIGHT))
+        pygame.draw.line(screen, (255, 255, 255), [OTSTUP, 0], [OTSTUP, HEIGHT], 4)
+        pygame.draw.line(screen, (255, 255, 255), [WIDTH - OTSTUP, 0],
+                         [WIDTH - OTSTUP, HEIGHT], 4)
+        pygame.draw.line(screen, (255, 255, 255), [(WIDTH - OTSTUP * 2) / 3, 0],
+                         [(WIDTH - OTSTUP * 2) / 3, HEIGHT], 4)
+        pygame.draw.line(screen, (255, 255, 255), [(WIDTH - OTSTUP * 2) / 3 * 2, 0],
+                         [(WIDTH - OTSTUP * 2) / 3 * 2, HEIGHT], 4)
+
         bus.draw()
         for car in cars:
             car.draw()
