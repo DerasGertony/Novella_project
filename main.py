@@ -53,6 +53,7 @@ def rhythm_game_start(healt_points, wait_new_msg, wait_answer):
                 else:
                     msg.draw_Symbol("WRONG_ANSWER")
                     HP.pop() # удаление сердца за неправильный ответ
+
                     print("HP LOG: wrong answer")
         
         # Если с момента Правильного ответа прошло WAIT_NEW_MSG_TIME, то отображаем новую карточку с заданием
@@ -85,9 +86,18 @@ def rhythm_game_start(healt_points, wait_new_msg, wait_answer):
         if not(msg.updating):
             msg.draw_Symbol(rhythmLine[task_num])
 
-        for i in range(len(HP)): # отрисовка сердец
-            HP[i].draw()
 
+        if len(HP) == 0:
+            pygame.display.update()
+
+            print("LOSE SCREEN AND RESTART GAME")
+            is_running = False
+
+            pygame.quit()
+        else:
+            for i in range(len(HP)): # отрисовка сердец
+                HP[i].draw()
+        
         pygame.display.update()
         
 
