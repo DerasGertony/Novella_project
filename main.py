@@ -41,11 +41,11 @@ class Hero(pygame.sprite.Sprite):
         self.image = pygame.image.load(path)
         self.rect = self.image.get_rect(center=(x, y))
 
-use_sprites = pygame.sprite.Group() # interactive sprites
 
+use_sprites = pygame.sprite.Group()  # interactive sprites
 
-#starting screen
-st1 = Button([width/2, height/3], 'brat', font, (0,0,0))
+# starting screen
+st1 = Button([width / 2, height / 3], 'brat', font, (0, 0, 0))
 st2 = Button([width/2, height/2], 'brat', font, (0,0,0))
 st3 = Button([width/2, height/1.5], 'brat', font, (0,0,0))
 use_sprites.add(st1)
@@ -69,9 +69,8 @@ while True:
                 if sprite.rect.collidepoint(event.pos):
                     sprite.use()
 
-
     use_sprites.update()
-    screen.fill((0,0,0))
+    screen.fill((0, 0, 0))
     use_sprites.draw(screen)
     pygame.display.flip()
     clock.tick(60)
