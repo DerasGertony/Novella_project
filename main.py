@@ -46,6 +46,7 @@ def rhythm_game_start(healt_points, wait_new_msg, wait_answer):
                     print("Cool")
 
                     msg.updating = True
+                    tick_update_msg = None
                     ticks_next_msg = pygame.time.get_ticks()
                     
                     msg.draw_Symbol("RIGHT_ANSWER")
