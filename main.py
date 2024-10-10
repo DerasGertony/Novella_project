@@ -25,9 +25,6 @@ def rhythm_game_start(healt_points, wait_new_msg, wait_answer):
         HP.append(HealthPointClass.HP(screen, hp_x_cord, hp_y_cord))
         hp_x_cord+= 40
 
-    for i in range(len(HP)): # отрисовка сердец
-        HP[i].draw()
-
     msg = MessageClass.Message(screen)
     msg.draw_Symbol(rhythmLine[task_num])
 
@@ -54,6 +51,8 @@ def rhythm_game_start(healt_points, wait_new_msg, wait_answer):
                     msg.draw_Symbol("RIGHT_ANSWER")
                 else:
                     msg.draw_Symbol("WRONG_ANSWER")
+                    HP.pop() # удаление сердца за неправильный ответ
+                    print("HP LOG: wrong answer")
         
         # Если с момента Правильного ответа прошло WAIT_NEW_MSG_TIME, то отображаем новую карточку с заданием
         try: 
@@ -74,6 +73,8 @@ def rhythm_game_start(healt_points, wait_new_msg, wait_answer):
                 tick_update_msg = None
                 ticks_next_msg = pygame.time.get_ticks()
                 
+                HP.pop() # удаление сердца за неправильный ответ
+                print("HP LOG: long waiting")
 
         except:
             pass
@@ -82,6 +83,9 @@ def rhythm_game_start(healt_points, wait_new_msg, wait_answer):
         
         if not(msg.updating):
             msg.draw_Symbol(rhythmLine[task_num])
+
+        for i in range(len(HP)): # отрисовка сердец
+            HP[i].draw()
 
         pygame.display.update()
         
