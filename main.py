@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((width, height))
 game_started = False
 font = pygame.font.SysFont('Arial', 40)
 
-
+# special sprite for buttons
 class Button(pygame.sprite.Sprite):
     def __init__(self, pos, text, font,fc):
         pygame.sprite.Sprite.__init__(self)
@@ -26,16 +26,32 @@ class Button(pygame.sprite.Sprite):
             self.rect.height / 2 - self.buttonText.get_rect().height / 2
         ])
 
+    def use(self):
+        return 1
 
 
 
-all_sprites = pygame.sprite.Group()
+
+
+
+
+
+use_sprites = pygame.sprite.Group() # interactive sprites
+
+
+#starting screen
 st1 = Button([width/2, height/3], 'brat', font, (0,0,0))
 st2 = Button([width/2, height/2], 'brat', font, (0,0,0))
 st3 = Button([width/2, height/1.5], 'brat', font, (0,0,0))
-all_sprites.add(st1)
-all_sprites.add(st2)
-all_sprites.add(st3)
+use_sprites.add(st1)
+use_sprites.add(st2)
+use_sprites.add(st3)
+
+#dialogue window
+back = 0
+hero = 0
+
+
 
 clock = pygame.time.Clock()
 while True:
@@ -45,9 +61,15 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            for sprite in use_sprites:
+                if sprite.rect.collidepoint(event.pos):
+                    sprite.use()
 
-    all_sprites.update()
+
+
+    use_sprites.update()
     screen.fill((0,0,0))
-    all_sprites.draw(screen)
+    use_sprites.draw(screen)
     pygame.display.flip()
     clock.tick(60)
