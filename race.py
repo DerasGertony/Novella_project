@@ -7,10 +7,12 @@ WIDTH, HEIGHT = 600, 800
 FPS = 60
 CAR_WIDTH, CAR_HEIGHT = 50, 100
 BUS_WIDTH, BUS_HEIGHT = 1.44 * CAR_WIDTH, 1.44 * CAR_HEIGHT
-BUS_SPEED, CAR_SPEED = 5, 7
+BUS_SPEED, CAR_SPEED = 4, 7
 LANE_WIDTH = WIDTH // 3
 MIN_DISTANCE = 100
+
 # пунктирные линии
+
 length_line = HEIGHT // 10
 distance = HEIGHT // length_line * 3
 
