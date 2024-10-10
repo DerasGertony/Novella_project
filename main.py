@@ -32,7 +32,11 @@ class BackGround(pygame.sprite.Sprite):
         self.image = pygame.image.load(path)
         self.rect = self.image.get_rect(center=(width / 2, height / 2))
 
-
+class Hero(pygame.sprite.Sprite):
+    def __init__(self, x, y, path):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load(path)
+        self.rect = self.image.get_rect(center=(x, y))
 
 
 all_sprites = pygame.sprite.Group()
