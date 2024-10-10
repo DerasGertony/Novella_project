@@ -11,7 +11,7 @@ screen = pygame.display.set_mode((width, height))
 game_started = False
 font = pygame.font.SysFont('Arial', 40)
 
-# special sprite for buttons
+
 class Button(pygame.sprite.Sprite):
     def __init__(self, pos, text, font,fc):
         pygame.sprite.Sprite.__init__(self)
@@ -25,16 +25,21 @@ class Button(pygame.sprite.Sprite):
             self.rect.width / 2 - self.buttonText.get_rect().width / 2,
             self.rect.height / 2 - self.buttonText.get_rect().height / 2
         ])
-
     def use(self):
         return 1
 
 
+class BackGround(pygame.sprite.Sprite):
+    def __init__(self, path):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load(path)
+        self.rect = self.image.get_rect(center=(width / 2, height / 2))
 
-
-
-
-
+class Hero(pygame.sprite.Sprite):
+    def __init__(self, x, y, path):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load(path)
+        self.rect = self.image.get_rect(center=(x, y))
 
 use_sprites = pygame.sprite.Group() # interactive sprites
 
@@ -51,8 +56,6 @@ use_sprites.add(st3)
 back = 0
 hero = 0
 
-
-
 clock = pygame.time.Clock()
 while True:
     screen.fill((0, 0, 0))
@@ -65,7 +68,6 @@ while True:
             for sprite in use_sprites:
                 if sprite.rect.collidepoint(event.pos):
                     sprite.use()
-
 
 
     use_sprites.update()
