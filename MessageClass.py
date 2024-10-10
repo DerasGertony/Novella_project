@@ -8,6 +8,6 @@ class Message:
         self.screen = screen
         self.updating = False
 
-    def show_Next_Symbol(self, task_key): #отображаем символ, который надо нажать
+    def draw_Symbol(self, task_key): #отображаем символ, который надо нажать
         self.task_message = pygame.image.load(f'images/{task_key}.jpg').convert() # создание изображения
         self.screen.blit(self.task_message, (X_CORD_KEY_TASK_MESSAGE, Y_CORD_KEY_TASK_MESSAGE))
