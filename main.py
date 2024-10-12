@@ -17,6 +17,8 @@ font = pygame.font.SysFont('Arial', 40)
 class Button(pygame.sprite.Sprite):
     def __init__(self, pos, text, font,fc, image, size, where):
         pygame.sprite.Sprite.__init__(self)
+        if image == ex:
+            image.set_alpha(255)
         image = pygame.transform.scale(image, size)
         self.image = image
         self.rect = self.image.get_rect()
@@ -64,15 +66,17 @@ heroes = {}
 
 
 def level(num):
+    if num == (0,0):
+        exit(0)
     use_sprites.empty()
     dec_sprites.empty()
     pygame.display.flip()
     back = BackGround(bus)
     dec_sprites.add(back)
     dec_sprites.add(BackGround(dg))
-    use_sprites.add(Button([150, 50], '', font, (0, 0, 0), bc, (300, 80), (3, 1)))
-    use_sprites.add(Button([width - 150, 50], '', font, (0, 0, 0), sk, (300, 80), (3, 1)))
-    use_sprites.add(Button([width/2, 60], '', font, (0, 0, 0), ex, (300, 120), (3, 1)))
+    use_sprites.add(Button([150, 50], '', font, (0, 0, 0), bc, (300, 80), (num[0], num[1]-1)))
+    use_sprites.add(Button([width - 150, 50], '', font, (0, 0, 0), sk, (300, 80), (num[0],num[1]+1)))
+    use_sprites.add(Button([width/2, 60], '', font, (0, 0, 0), ex, (300, 120), (0,0)))
 
 
 
