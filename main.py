@@ -8,6 +8,7 @@ pygame.init()
 fps = 10
 fpsClock = pygame.time.Clock()
 width, height = 1920, 1080
+pygame.display.set_caption('HSE! STUDENT! LIFE!')
 screen = pygame.display.set_mode((width, height))
 game_started = False
 font = pygame.font.SysFont('Arial', 40)
@@ -30,7 +31,9 @@ class Button(pygame.sprite.Sprite):
 class BackGround(pygame.sprite.Sprite):
     def __init__(self, image):
         pygame.sprite.Sprite.__init__(self)
-        image = pygame.transform.scale(image, (width, height))
+        if image != startback and image != dg:
+            image.set_alpha(250)
+        image = pygame.transform.smoothscale(image, (width, height))
         self.image = image
         self.rect = self.image.get_rect(center=(width / 2, height / 2))
 
@@ -55,20 +58,22 @@ use_sprites.add(st2)
 use_sprites.add(st3)
 dec_sprites.add(back)
 
-butns = []
-backs = []
-heroes = []
+butns = {}
+backs = {}
+heroes = {}
 
 
 def level(num):
     use_sprites.empty()
     dec_sprites.empty()
     pygame.display.flip()
-    back = BackGround(startback)
-    dec_sprites.add(Hero(width/2,height - 200, dg, (width,400)))
-    use_sprites.add(Button([width / 10, height - 50], '', font, (0, 0, 0), bc, (300, 80), (3, 1)))
-    use_sprites.add(Button([width / 1.1, height - 50], '', font, (0, 0, 0), sk, (300, 80), (3, 1)))
-    use_sprites.add(Button([150, 60], '', font, (0, 0, 0), ex, (300, 120), (3, 1)))
+    back = BackGround(bus)
+    dec_sprites.add(back)
+    dec_sprites.add(BackGround(dg))
+    use_sprites.add(Button([150, 50], '', font, (0, 0, 0), bc, (300, 80), (3, 1)))
+    use_sprites.add(Button([width - 150, 50], '', font, (0, 0, 0), sk, (300, 80), (3, 1)))
+    use_sprites.add(Button([width/2, 60], '', font, (0, 0, 0), ex, (300, 120), (3, 1)))
+
 
 
 
