@@ -36,8 +36,9 @@ class BackGround(pygame.sprite.Sprite):
 
 
 class Hero(pygame.sprite.Sprite):
-    def __init__(self, x, y, image):
+    def __init__(self, x, y, image, size):
         pygame.sprite.Sprite.__init__(self)
+        image = pygame.transform.scale(image, size)
         self.image = image
         self.rect = self.image.get_rect(center=(x, y))
 
@@ -60,13 +61,14 @@ heroes = []
 
 
 def level(num):
-    return 1
-
-
-
-
-
-
+    use_sprites.empty()
+    dec_sprites.empty()
+    pygame.display.flip()
+    back = BackGround(startback)
+    dec_sprites.add(Hero(width/2,height - 200, dg, (width,400)))
+    use_sprites.add(Button([width / 10, height - 50], '', font, (0, 0, 0), bc, (300, 80), (3, 1)))
+    use_sprites.add(Button([width / 1.1, height - 50], '', font, (0, 0, 0), sk, (300, 80), (3, 1)))
+    use_sprites.add(Button([150, 60], '', font, (0, 0, 0), ex, (300, 120), (3, 1)))
 
 
 
