@@ -9,9 +9,9 @@ home = pygame.image.load('images/stbc.jpg')
 bed = pygame.image.load('images/stbc.jpg')
 
 # Buttons
-sb1 = pygame.image.load('images/stlv1.png')
-sb2= pygame.image.load('images/stlv2.png')
-sb3= pygame.image.load('images/stlv3.png')
+sb1 = pygame.image.load('images/Group 198.png')
+sb2= pygame.image.load('images/Group 199.png')
+sb3= pygame.image.load('images/Group 200.png')
 
 
 # dg window
