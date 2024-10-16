@@ -1,4 +1,5 @@
 import pygame
+import ProgressBarClass
 
 pygame.init()
 screen = pygame.display.set_mode((1100,800))
@@ -8,9 +9,12 @@ FPS = 60
 
 def wakeUp():
     clock = pygame.time.Clock()
-    count = 5
+    clicks = 5
     time_minusProgress = set()
     time_minusProgress_after_n_sec = set()
+
+    progress = ProgressBarClass.ProgressBar(screen)
+    progress.draw(0)
 
     is_running = True
     while is_running:
@@ -20,17 +24,21 @@ def wakeUp():
                 is_running = False
                 pygame.quit()
             if event.type == pygame.KEYDOWN and event.key == btnEventId["SPACE"]:
-                count+=1
+                clicks+=1
 
         second_now = pygame.time.get_ticks()//1000
         if second_now > 0 and second_now not in time_minusProgress:
-            count-=1
+            clicks-=1
             time_minusProgress.add(second_now)
 
         if second_now > 0 and (second_now)%5 == 0 and second_now not in time_minusProgress_after_n_sec:
-            count-=5
+            clicks-=5
             time_minusProgress_after_n_sec.add(second_now)
-        print(count)
+        print(clicks)
+
+        screen.fill((0,0,0))
+
+        progress.draw(clicks*5)
 
         pygame.display.update()
 
