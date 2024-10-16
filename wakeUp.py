@@ -42,4 +42,14 @@ def wakeUp():
 
         pygame.display.update()
 
+        if clicks>=100:
+            print("WAKE UP, BRO! \nBREATH AIR!")
+            is_running = False
+            pygame.quit()
+
+        elif clicks <= 0:
+            print("YOUR ARE SLEEPING, BRO! \nTRY ANOTHER ROUND!")
+            is_running = False
+            pygame.quit()
+
 wakeUp()
