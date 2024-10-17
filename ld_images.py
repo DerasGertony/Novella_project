@@ -10,8 +10,8 @@ bed = pygame.image.load('images/stbc.jpg')
 
 # Buttons
 sb1 = pygame.image.load('images/Group 198.png')
-sb2= pygame.image.load('images/Group 199.png')
-sb3= pygame.image.load('images/Group 200.png')
+sb2 = pygame.image.load('images/Group 199.png')
+sb3 = pygame.image.load('images/Group 200.png')
 
 
 # dg window
@@ -28,7 +28,7 @@ qr = pygame.image.load('Pictures/characters/quadrober/main.png')
 
 # BackGrounds
   # BUS
-bus1 = pygame.image.load('Pictures/backgrounds/bus/1.jpg') # idk как их назвать по другому
+bus1 = pygame.image.load('Pictures/backgrounds/bus/1.jpg')
 bus2 = pygame.image.load('Pictures/backgrounds/bus/2.jpg')
 bus3 = pygame.image.load('Pictures/backgrounds/bus/3.jpg')
 
