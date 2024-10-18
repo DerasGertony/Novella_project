@@ -4,24 +4,30 @@ from ray_casting_func import ray_casting
 
 
 class Draw:
-    def __init__(self, sc, sc_map):
-        self.sc_map = sc_map
+    def __init__(self, sc, sc_map, time_finish):
         self.sc = sc
-        self.font = pygame.font.SysFont('Arial', 36, bold=True)
+        self.sc_map = sc_map
+        self.font = pygame.font.SysFont('Arial', 36, bold=True) # для таймера
+        # под единицей картинка стен, под S - потолок/небо
+        self.textures = {'1': pygame.image.load('').convert(),
+                         'S': pygame.image.load('').convert()
+                         }
+        self.time_finish = time_finish
 
-    # бэкграунд пол небо
-    def back(self):
-        pygame.draw.rect(self.sc, BLUE, (0, 0, WIDTH, HALF_HEIGHT))
+    def back(self, angle):
+        sky_offset = -5 * math.degrees(angle) % WIDTH
+        self.sc.blit(self.textures['S'], (sky_offset, 0))
+        self.sc.blit(self.textures['S'], (sky_offset - WIDTH, 0))
+        self.sc.blit(self.textures['S'], (sky_offset + WIDTH, 0))
         pygame.draw.rect(self.sc, DARKGRAY, (0, HALF_HEIGHT, WIDTH, HALF_HEIGHT))
 
     def walls(self, player_pos, player_angle):
-        ray_casting(self.sc, player_pos, player_angle)
+        ray_casting(self.sc, player_pos, player_angle, self.textures)
 
-
-    def mini_map(self, player):
-        self.sc_map.fill(BLACK)
-        map_x, map_y = player.x // MAP_SCALE, player.y // MAP_SCALE
-        pygame.draw.line(self.sc_map, YELLOW, (map_x, map_y), (map_x + 12 * math.cos(player.angle),
-                                                               map_y + 12 * math.sin(player.angle)), 2)
-        pygame.draw.circle(self.sc_map, RED, (int(map_x), int(map_y)), 5)
-        self.sc.blit(self.sc_map, MAP_POS)
+    def timer(self, time_now):
+        if self.time_finish - int(time_now) <= 0:
+            pygame.quit() # тут окно проигрыша
+        else:
+            render = self.font.render(str(self.time_finish - int(time_now)), 0, DARKRED)
+            w, h = pygame.display.get_surface().get_size()
+            self.sc.blit(render, (w // 2 - 20,  5))
