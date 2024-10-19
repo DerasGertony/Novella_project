@@ -41,7 +41,7 @@ def ray_casting(sc, player_pos, player_angle, textures):
         offset = int(offset) % TILE
         depth *= math.cos(player_angle - cur_angle) # избавление от эффекта рыбьего глаза
         depth = max(depth, 0.00001)
-        proj_height = min(int(PROJ_COEFF / depth), 2 * HEIGHT)
+        proj_height = min(int(PROJ_COEFF / depth), 6 * HEIGHT)
 
         wall_column = textures[texture].subsurface(offset * TEXTURE_SCALE, 0, TEXTURE_SCALE, TEXTURE_HEIGHT)
         wall_column = pygame.transform.scale(wall_column, (SCALE, proj_height))

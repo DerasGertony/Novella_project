@@ -9,13 +9,13 @@ class Draw:
         self.sc_map = sc_map
         self.font = pygame.font.SysFont('Arial', 36, bold=True) # для таймера
         # под единицей картинка стен, под S - потолок/небо
-        self.textures = {'1': pygame.image.load('').convert(),
-                         'S': pygame.image.load('').convert()
+        self.textures = {'1': pygame.image.load('wall.jpg').convert(),
+                         'S': pygame.image.load('img.png').convert()
                          }
         self.time_finish = time_finish
 
     def back(self, angle):
-        sky_offset = -5 * math.degrees(angle) % WIDTH
+        sky_offset = -10 * math.degrees(angle) % WIDTH
         self.sc.blit(self.textures['S'], (sky_offset, 0))
         self.sc.blit(self.textures['S'], (sky_offset - WIDTH, 0))
         self.sc.blit(self.textures['S'], (sky_offset + WIDTH, 0))

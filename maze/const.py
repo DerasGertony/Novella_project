@@ -20,7 +20,7 @@ MAP_POS = (0, HEIGHT - 200)
 
 FOV = math.pi / 3 # чем больше делитель тем ближе стены
 HALF_FOV = FOV / 2
-NUM_RAYS = 350 # было 300, можно менять
+NUM_RAYS = 300
 MAX_DEPTH = 800
 DELTA_ANGLE = FOV / NUM_RAYS
 DIST = NUM_RAYS / (2 * math.tan(HALF_FOV))
