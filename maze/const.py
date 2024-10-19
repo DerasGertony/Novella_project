@@ -1,4 +1,5 @@
 import math
+import time
 
 # время на прохождение в сек
 
@@ -24,25 +25,31 @@ NUM_RAYS = 300
 MAX_DEPTH = 800
 DELTA_ANGLE = FOV / NUM_RAYS
 DIST = NUM_RAYS / (2 * math.tan(HALF_FOV))
-PROJ_COEFF = 3 * DIST * TILE
+PROJ_COEFF = 2 * DIST * TILE
 SCALE = WIDTH // NUM_RAYS
-TEXTURE_WIDTH = 512
-TEXTURE_HEIGHT = 512
+TEXTURE_WIDTH = 200
+TEXTURE_HEIGHT = 200
 TEXTURE_SCALE = TEXTURE_WIDTH // TILE
 
 # настройки игрока
 
-player_pos = (HALF_WIDTH, HALF_HEIGHT)
+player_pos = (TILE * 1.5, TILE * 1.5)
 player_angle = 0
-player_speed = 1
+player_speed = 1.7
 
 # цвета
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 DARKRED = (140, 0, 0)
-GREEN = (0, 220, 0)
-BLUE = (0, 0, 255)
-YELLOW = (220, 220, 0)
 DARKGRAY = (40, 40, 40)
-PURPLE = (120, 0, 120)
+FLOOR = (74, 70, 64)
+SKY = (110, 184, 224)
+
+cur_time = time.time_ns()
+
+def freeze():
+    global cur_time
+    delta = (time.time_ns() - cur_time)/ 1000000000
+    cur_time = time.time_ns()
+    return delta

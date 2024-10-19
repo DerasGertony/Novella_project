@@ -1,5 +1,4 @@
 import pygame
-import time
 from pygame import K_ESCAPE, KEYDOWN
 from const import *
 from draw import Draw
@@ -11,6 +10,7 @@ from player import Player
 pygame.init()
 sc = pygame.display.set_mode((WIDTH, HEIGHT), pygame.HWSURFACE|pygame.DOUBLEBUF|pygame.FULLSCREEN)
 sc_map = pygame.Surface((WIDTH // MAP_SCALE, HEIGHT // MAP_SCALE))
+pygame.mouse.set_visible(False)
 clock = pygame.time.Clock()
 player = Player()
 time_finish = int(time.time() + delta_time)
@@ -24,6 +24,11 @@ while True:
         if event.type == KEYDOWN:
             if event.key == K_ESCAPE:
                 pygame.quit()
+    # проверка на прохождение, коэффициенты зависимо от карты
+    ox, oy = player.pos
+    if TILE * 2 <= ox <= TILE * 3 and TILE * 12.5 <= oy <= TILE * 14:
+        pygame.quit()
+        break
     player.movement()
     drawing.back(player.angle)
     drawing.walls(player.pos, player.angle)
