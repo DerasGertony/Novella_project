@@ -1,5 +1,3 @@
-import math
-
 import pygame
 from const import *
 from map import collision_walls
@@ -10,6 +8,7 @@ class Player:
         self.x, self.y = player_pos
         self.angle = player_angle
         self.side = 30
+        self.freeze = freeze()
         self.rect = pygame.Rect(*player_pos, self.side, self.side)
 
     @property
@@ -42,9 +41,10 @@ class Player:
         self.y += dy
 
     def movement(self):
-        sin_a = math.sin(self.angle)
-        cos_a = math.cos(self.angle)
+        sin_a = math.sin(self.angle) * self.freeze
+        cos_a = math.cos(self.angle) * self.freeze
         keys = pygame.key.get_pressed()
+        # self.mouse_checker() мне не нрав с мышкой, но можем оставить
         if keys[pygame.K_w]:
             dx = player_speed * cos_a
             dy = player_speed * sin_a
@@ -62,10 +62,16 @@ class Player:
             dy = player_speed * cos_a
             self.detect_collision(dx, dy)
         if keys[pygame.K_LEFT]:
-            self.angle -= 0.01
+            self.angle -= 0.01 * self.freeze
         if keys[pygame.K_RIGHT]:
-            self.angle += 0.01
+            self.angle += 0.01 * self.freeze
         self.rect.center = self.x, self.y
-        self.angle %= math.pi * 2
+
+
+    def mouse_checker(self):
+        if pygame.mouse.get_focused():
+            diff = pygame.mouse.get_pos()[0] - HALF_WIDTH
+            pygame.mouse.set_pos((HALF_WIDTH, HALF_HEIGHT))
+            self.angle += diff * 0.025
 
 
