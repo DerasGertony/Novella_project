@@ -2,7 +2,7 @@
 import sys
 import pygame
 from ld_images import *
-from pyplot2 import *
+from pyplot import *
 
 # Configuration
 pygame.init()
@@ -13,6 +13,7 @@ pygame.display.set_caption('HSE! STUDENT! LIFE!')
 screen = pygame.display.set_mode((width, height))
 game_started = False
 font = pygame.font.SysFont('Arial', 30)
+nm = (0,0)
 
 
 class Button(pygame.sprite.Sprite):
@@ -68,7 +69,7 @@ heroes = {}
 def blit_text(surface, text, pos, font, color=pygame.Color('gray')):
     words = [word.split(' ') for word in text.splitlines()]
     space = font.size(' ')[0]
-    max_width, max_height = surface.get_size()[0] - 200, surface.get_size()[1]
+    max_width, max_height = surface.get_size()[0] - 150, surface.get_size()[1]
     x, y = pos
     for line in words:
         for word in line:
@@ -85,6 +86,8 @@ def blit_text(surface, text, pos, font, color=pygame.Color('gray')):
 
 
 def level(num):
+    global nm
+    nm = num
     if num == (0,0):
         exit(0)
     use_sprites.empty()
@@ -94,13 +97,24 @@ def level(num):
     dec_sprites.add(back)
     dlg = BackGround(dg)
     dec_sprites.add(dlg)
-
-    use_sprites.add(Button([150, 50], '', font, (0, 0, 0), bc, (300, 80), (num[0], num[1], max(num[2]-1, 0))))
-    use_sprites.add(Button([width - 150, 50], '', font, (0, 0, 0), sk, (300, 80), (num[0],num[1],min(mx2[(num[0],num[1])],num[2]))))
-    use_sprites.add(Button([width/2, 60], '', font, (0, 0, 0), ex, (300, 120), (0,0)))
+    frw = Button([width - 150, 50], '', font, (0, 0, 0), sk, (300, 80), (num[0],num[1],min(mx[(num[0],num[1])],num[2] + 1)))
+    bck = Button([150, 50], '', font, (0, 0, 0), bc, (300, 80), (num[0], num[1], max(num[2]-1, 0)))
+    exi = Button([width/2, 60], '', font, (0, 0, 0), ex, (300, 120), (0,0))
+    use_sprites.add(bck)
+    use_sprites.add(frw)
+    use_sprites.add(exi)
+    if num[2] == mx[num[0], num[1]]:
+        ch1 = Button([width - width / 6, 670], '', font, (0, 0, 0), ex, (600, 50), btn[num[0],num[1],1][1])
+        ch2 = Button([width - width / 6, 750], '', font, (0, 0, 0), ex, (600, 50), btn[num[0],num[1],2][1])
+        use_sprites.add(ch1)
+        use_sprites.add(ch2)
+        textpos = (0,10)
+        blit_text(ch1.image, btn[num[0],num[1],1][0], textpos, font)
+        textpos = (0, 10)
+        blit_text(ch2.image, btn[num[0], num[1], 2][0], textpos, font)
 
     textpos = (220, 820)
-    blit_text(dlg.image, text2[num], textpos, font)
+    blit_text(dlg.image, text[num], textpos, font)
 
 
 
@@ -119,7 +133,21 @@ while True:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             for sprite in use_sprites:
                 if sprite.rect.collidepoint(event.pos):
-                    level(sprite.use())
+                    sprite.image.set_alpha(50)
+                    temp = sprite
+        elif event.type == pygame.MOUSEBUTTONUP:
+            level(temp.use())
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RSHIFT:
+                print(nm)
+                if nm != (0,0):
+                    level((nm[0],nm[1],min(mx[(nm[0],nm[1])],nm[2]+1)))
+            if event.key == pygame.K_LSHIFT:
+                print(nm)
+                if nm != (0, 0):
+                    level((nm[0], nm[1], max(nm[2]-1, 0)))
+
+
     dec_sprites.update()
     use_sprites.update()
     screen.fill((0, 0, 0))
