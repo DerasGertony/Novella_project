@@ -1,3 +1,5 @@
+import math
+
 import pygame
 from const import *
 from map import collision_walls
@@ -7,7 +9,7 @@ class Player:
     def __init__(self):
         self.x, self.y = player_pos
         self.angle = player_angle
-        self.side = 20
+        self.side = 30
         self.rect = pygame.Rect(*player_pos, self.side, self.side)
 
     @property
@@ -42,7 +44,6 @@ class Player:
     def movement(self):
         sin_a = math.sin(self.angle)
         cos_a = math.cos(self.angle)
-        self.rect.center = self.x, self.y
         keys = pygame.key.get_pressed()
         if keys[pygame.K_w]:
             dx = player_speed * cos_a
@@ -64,5 +65,7 @@ class Player:
             self.angle -= 0.01
         if keys[pygame.K_RIGHT]:
             self.angle += 0.01
+        self.rect.center = self.x, self.y
+        self.angle %= math.pi * 2
 
 
