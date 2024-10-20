@@ -79,7 +79,7 @@ class Car:
         screen.blit(self.image, self.rect)
 
 
-def main():
+def start_race():
     clock = pygame.time.Clock()
     bus = Bus()
     cars = []
@@ -132,5 +132,4 @@ def main():
     pygame.quit()
 
 
-if __name__ == "__main__":
-    main()
+start_race()
