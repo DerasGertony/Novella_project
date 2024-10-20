@@ -1,5 +1,3 @@
-from math import floor
-
 import pygame
 from const import *
 from ray_casting_func import ray_casting
