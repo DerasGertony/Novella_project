@@ -10,10 +10,10 @@ class Draw:
         self.sc = sc
         self.sc_map = sc_map
         self.font = pygame.font.SysFont('Arial', 36, bold=True) # для таймера
-        # под единицей картинка стен, под S - потолок/небо
-        self.textures = {'1': pygame.image.load('wall.jpg').convert(),
-                         'W': pygame.image.load('img_3.png').convert()
-                         # 'S': pygame.image.load('img_7.png').convert()
+        # под единицей картинка стен, под S - потолок/небо, W - финиш (win)
+        self.textures = {'1': pygame.image.load('../images/wall.jpg').convert(),
+                         'W': pygame.image.load('../images/img_3.png').convert()
+                         # 'S': pygame.image.load('').convert()
                          }
         self.time_finish = time_finish
 
