@@ -6,15 +6,16 @@ pygame.init()
 WIDTH, HEIGHT = 600, 800
 FPS = 60
 CAR_WIDTH, CAR_HEIGHT = 50, 100
-BUS_WIDTH, BUS_HEIGHT = 1.44 * CAR_WIDTH, 1.44 * CAR_HEIGHT
+BUS_SCALE = 1.44 # во сколько раз автобус больше чем машины
+BUS_WIDTH, BUS_HEIGHT = BUS_SCALE * CAR_WIDTH, BUS_SCALE * CAR_HEIGHT
 BUS_SPEED, CAR_SPEED = 4, 7
 LANE_WIDTH = WIDTH // 3
-MIN_DISTANCE = 100
+MIN_DISTANCE = 100 # минимальное расстояние между машинами
+WIN = 40 # столько машин надо преодолеть, чтобы выиграть
 
-# пунктирные линии
-
-length_line = HEIGHT // 10
-distance = HEIGHT // length_line * 3
+length_line = HEIGHT // 10 # длина пунктирной линии
+distance = HEIGHT // length_line * 3 # расстояние между пунктирными линиями
+frequency = 40 # частота появления машин (чем больше число - тем реже)
 
 RED = (255, 0, 0)
 GREEN = (0, 128, 0)
@@ -73,7 +74,7 @@ class Car:
         self.lane = lane
 
     def update(self):
-        self.rect.y += CAR_SPEED  # скорость машин, чтобы повысить сложность можем увеличить этот параметр или фпс (переменная)
+        self.rect.y += CAR_SPEED  # скорость машин, чтобы повысить сложность, можем увеличить этот параметр или фпс (переменная)
 
     def draw(self):
         screen.blit(self.image, self.rect)
@@ -83,6 +84,7 @@ def start_race():
     clock = pygame.time.Clock()
     bus = Bus()
     cars = []
+    count_cars = 0
 
     # пунктир
     line_position = -length_line
@@ -95,9 +97,11 @@ def start_race():
 
         bus.move()
 
-        if random.randint(1, 40) == 1:  # частота появления машин (чем больше второе число - тем реже)
+        if random.randint(1, frequency) == 1:
             lane_choice = random.randint(0, 2)
-            if all(abs(car.rect.y + CAR_HEIGHT) >= MIN_DISTANCE for car in cars if car.lane == lane_choice):
+            if (all(abs(car.rect.y + CAR_HEIGHT) >= MIN_DISTANCE for car in cars if car.lane == lane_choice)
+                    and count_cars < WIN): # для условия победы
+                count_cars += 1 # количество машин
                 cars.append(Car(lane_choice))
 
         for car in cars[:]:
@@ -128,6 +132,11 @@ def start_race():
 
         pygame.display.flip()
         clock.tick(FPS)
+
+        # условие победы
+        if count_cars == WIN and not cars:
+            pygame.quit()
+            break
 
     pygame.quit()
 
