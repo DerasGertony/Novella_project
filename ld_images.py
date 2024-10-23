@@ -22,8 +22,8 @@ bc = pygame.image.load('images/btbc.png')
 
 
 # Heroes
-gm_good = pygame.image.load('Pictures/characters/grandmother_1/main_1.png')
-gm_angry = pygame.image.load('Pictures/characters/grandmother_2/main.png')
+gm_good = pygame.image.load('Pictures/characters/кокет бабка.png')
+gm_angry = pygame.image.load('Pictures/characters/злой бабка((.png')
 qr = pygame.image.load('Pictures/characters/квадробер.png')
 gop_normal1 = pygame.image.load('Pictures/characters/гопник 1 нормис.png')
 gop_normal2 = pygame.image.load('Pictures/characters/гопник 2 нормис.png')
