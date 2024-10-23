@@ -28,21 +28,13 @@ gop_friendly1 = pygame.image.load('Pictures/characters/гопник 1 добри
 gop_friendly2 = pygame.image.load('Pictures/characters/гопник 2 добри.png')
 biv_ild = pygame.image.load('Pictures/characters/биван ильдягин.png')
 ser_depression = pygame.image.load('Pictures/characters/дипрессия козла сергеевича.png')
-<<<<<<< HEAD
 sh_friendly = pygame.image.load('Pictures/characters/добри шалья ильявин)).png')
 sh_angry = pygame.image.load('Pictures/characters/злой шалья илявин((.jpg')
 bi_sigma = pygame.image.load('Pictures/characters/игорь борисович сигма с шаурмой.png')
-<<<<<<< HEAD
-
-
-=======
->>>>>>> TestLVL2
-=======
 ser_normal = pygame.image.load('Pictures/charatters/sergay_normal')
 sh_friendly = pygame.image.load('Pictures/characters/добри шалья ильявин)).png')
 sh_angry = pygame.image.load('Pictures/characters/злой шалья илявин((.jpg')
 bi_sigma = pygame.image.load('Pictures/characters/игорь борисович сигма с шаурмой.png')
->>>>>>> TestLVL3
 
 # BackGrounds
 # BUS
