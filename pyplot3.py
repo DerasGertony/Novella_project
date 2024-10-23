@@ -357,18 +357,18 @@ mx3 = {
 }
 
 hero3 = {
-    (3, 1, 12): Sh,
-    (3, 2, 4): Sh,
-    (3, 2, 9): Sh,
-    (3, 2, 10): Sh,
-    (3, 2, 11): Sh,
-    (3, 2, 13): Sh,
-    (3, 2, 17): B1,
-    (3, 10, 9): Ser,
-    (3, 12, 2): Ser,
-    (3, 12, 3): Ser,
-    (3, 12, 6): Ser,
-    (3, 14, 4): B1,
+    (3, 1, 12): sh_friendly,
+    (3, 2, 4): sh_friendly,
+    (3, 2, 9): sh_friendly,
+    (3, 2, 10): sh_friendly,
+    (3, 2, 11): sh_friendly,
+    (3, 2, 13): sh_friendly,
+    (3, 2, 17): gm_angry,
+    (3, 10, 9): ser_depression,
+    (3, 12, 2): ser_depression,
+    (3, 12, 3): ser_depression,
+    (3, 12, 6): ser_normal,
+    (3, 14, 4): gm_angry,
 
 }
 
