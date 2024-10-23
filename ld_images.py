@@ -1,6 +1,8 @@
 import sys
 import pygame
 
+busted = pygame.image.load('Pictures/потрчено.jpg')
+good = pygame.image.load('Pictures/good.jpg')
 # Backs
 startback = pygame.image.load('images/stbc.jpg')
 bus = pygame.image.load('Pictures/backgrounds/bus/3.jpg')
