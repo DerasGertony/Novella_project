@@ -16,6 +16,7 @@ font = pygame.font.SysFont('Arial', 30)
 nm = (0,0)
 
 
+
 class Button(pygame.sprite.Sprite):
     def __init__(self, pos, text, font,fc, image, size, where):
         pygame.sprite.Sprite.__init__(self)
@@ -54,9 +55,9 @@ use_sprites = pygame.sprite.Group()  # interactive sprites
 dec_sprites = pygame.sprite.Group()
 # starting screen
 back = BackGround(startback)
-st1 = Button([width / 4, height / 2 + 50], 's', font, (0, 0, 0),sb1, (808, 152), (1,1))
+st1 = Button([width / 4, height / 2 + 50], 's', font, (0, 0, 0),sb1, (808, 152), (1,0,0))
 st2 = Button([width/4 +10, height/2 +200], '', font, (0,0,0),sb2,(804, 151), (2,0,0))
-st3 = Button([width/4, height/2 + 350], '', font, (0,0,0),sb3,(800, 150), (3,1))
+st3 = Button([width/4, height/2 + 350], '', font, (0,0,0),sb3,(800, 150), (3,0,0))
 use_sprites.add(st1)
 use_sprites.add(st2)
 use_sprites.add(st3)
@@ -87,11 +88,19 @@ def blit_text(surface, text, pos, font, color=pygame.Color('gray')):
 
 def level(num):
     global nm
+    use_sprites.empty()
+    dec_sprites.empty()
     nm = num
     if num == (0,0):
         exit(0)
-    use_sprites.empty()
-    dec_sprites.empty()
+    if num == (-1,0):
+        back = BackGround(busted)
+        dec_sprites.add(back)
+        return 0
+    if num == (-1,1):
+        back = BackGround(good)
+        dec_sprites.add(back)
+        return 0
     pygame.display.flip()
     back = BackGround(bus)
     dec_sprites.add(back)
@@ -103,7 +112,7 @@ def level(num):
     use_sprites.add(bck)
     use_sprites.add(frw)
     use_sprites.add(exi)
-    if num[2] == mx[num[0], num[1]]:
+    if num[2] == mx[num[0], num[1]] and num not in finale.keys():
         ch1 = Button([width - width / 6, 670], '', font, (0, 0, 0), ex, (600, 50), btn[num[0],num[1],1][1])
         ch2 = Button([width - width / 6, 750], '', font, (0, 0, 0), ex, (600, 50), btn[num[0],num[1],2][1])
         use_sprites.add(ch1)
@@ -112,6 +121,12 @@ def level(num):
         blit_text(ch1.image, btn[num[0],num[1],1][0], textpos, font)
         textpos = (0, 10)
         blit_text(ch2.image, btn[num[0], num[1], 2][0], textpos, font)
+    if num in finale.keys():
+        ch1 = Button([width - width / 6, 670], '', font, (0, 0, 0), ex, (600, 50), (-1,finale[num]))
+        use_sprites.add(ch1)
+        textpos = (0, 10)
+        blit_text(ch1.image, 'THe EnD', textpos, font)
+
 
     textpos = (220, 820)
     blit_text(dlg.image, text[num], textpos, font)
@@ -121,7 +136,7 @@ def level(num):
 #dialogue window
 #back = BackGround()
 #hero = Hero()
-
+temp = 0
 clock = pygame.time.Clock()
 while True:
     screen.fill((0, 0, 0))
@@ -135,9 +150,12 @@ while True:
                 if sprite.rect.collidepoint(event.pos):
                     sprite.image.set_alpha(50)
                     temp = sprite
-        elif event.type == pygame.MOUSEBUTTONUP:
+        elif event.type == pygame.MOUSEBUTTONUP and temp:
             level(temp.use())
+            temp = 0
         elif event.type == pygame.KEYDOWN:
+            if nm[0] == -1:
+                exit(0)
             if event.key == pygame.K_RSHIFT:
                 print(nm)
                 if nm != (0,0):
