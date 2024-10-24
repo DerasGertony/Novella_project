@@ -14,7 +14,7 @@ width = info.current_w
 height = info.current_h
 screen = pygame.display.set_mode((width, height), pygame.FULLSCREEN | pygame.SCALED)
 game_started = False
-font = pygame.font.SysFont('Montserrat Regular', 30)
+font = pygame.font.SysFont('Montserrat', 30)
 nm = (0, 0)
 
 
