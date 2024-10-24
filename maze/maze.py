@@ -34,4 +34,4 @@ while True:
     drawing.walls(player.pos, player.angle)
     drawing.timer(time.time())
     pygame.display.flip()
-    clock.tick()
+    clock.tick(FPS)
