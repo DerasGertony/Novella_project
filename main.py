@@ -14,11 +14,10 @@ width = info.current_w
 height = info.current_h
 screen = pygame.display.set_mode((width, height), pygame.FULLSCREEN | pygame.SCALED)
 game_started = False
-k = screen.get_size()[0]/1920
-font = pygame.font.Font('TT Norms Pro Italic.otf', round(25*k))
+k = screen.get_size()[0] / 1920
+font = pygame.font.Font('TT Norms Pro Regular.otf', round(30 * k))
 nm = (0, 0)
 tfon = home
-
 
 
 class Button(pygame.sprite.Sprite):
@@ -59,21 +58,19 @@ use_sprites = pygame.sprite.Group()  # interactive sprites
 dec_sprites = pygame.sprite.Group()
 # starting screen
 back = BackGround(startback)
-st1 = Button([width / 4, height / 2 + 50*k], 's', font, (0, 0, 0), sb1, (808*k, 152*k), (1, 0, 0))
-st2 = Button([width / 4 + 10, height / 2 + 200*k], '', font, (0, 0, 0), sb2, (804*k, 151*k), (2, 0, 0))
-st3 = Button([width / 4, height / 2 + 350*k], '', font, (0, 0, 0), sb3, (800*k, 150*k), (3, 0, 0))
+st1 = Button([width / 4, height / 2 + 50 * k], 's', font, (0, 0, 0), sb1, (808 * k, 152 * k), (1, 0, 0))
+st2 = Button([width / 4 + 10, height / 2 + 200 * k], '', font, (0, 0, 0), sb2, (804 * k, 151 * k), (2, 0, 0))
+st3 = Button([width / 4, height / 2 + 350 * k], '', font, (0, 0, 0), sb3, (800 * k, 150 * k), (3, 0, 0))
 use_sprites.add(st1)
 use_sprites.add(st2)
 use_sprites.add(st3)
 dec_sprites.add(back)
 
 
-
-
 def blit_text(surface, text, pos, font, color=pygame.Color('gray')):
     words = [word.split(' ') for word in text.splitlines()]
     space = font.size(' ')[0]
-    max_width, max_height = surface.get_size()[0] - 150*k, surface.get_size()[1]
+    max_width, max_height = surface.get_size()[0] - 230 * k, surface.get_size()[1]
     x, y = pos
     for line in words:
         for word in line:
@@ -114,27 +111,27 @@ def level(num):
     dec_sprites.add(back)
     if num in hero.keys():
         hr = hero[num]
-        h1 = Hero(1500 * k,  height/2, hr[0], (1080 * k, height))
+        h1 = Hero(1500 * k, height / 2, hr[0], (1080 * k, height))
         dec_sprites.add(h1)
         if len(hr) == 2:
-            h2 = Hero(500 * k,  height/2, hr[1], (1080 * k, height))
+            h2 = Hero(500 * k, height / 2, hr[1], (1080 * k, height))
             dec_sprites.add(h2)
     dlg = BackGround(dg)
     dec_sprites.add(dlg)
-    frw = Button([width - 150*k, 50*k], '', font, (0, 0, 0), sk, (300*k, 80*k), (num[0], num[1], min(mx[(num[0], num[1])], num[2] + 1)))
-    bck = Button([150*k, 50*k], '', font, (0, 0, 0), bc, (300*k, 80*k), (num[0], num[1], max(num[2] - 1, 0)))
-    exi = Button([width / 2, 60*k], '', font, (0, 0, 0), ex, (300*k, 120*k), (0, 0))
+    frw = Button([width - 150 * k, 50 * k], '', font, (0, 0, 0), sk, (240 * k, 60 * k), (num[0], num[1], min(mx[(num[0], num[1])], num[2] + 1)))
+    bck = Button([150 * k, 50 * k], '', font, (0, 0, 0), bc, (240 * k, 60 * k), (num[0], num[1], max(num[2] - 1, 0)))
+    exi = Button([width / 2, 60 * k], '', font, (0, 0, 0), ex, (300 * k, 120 * k), (0, 0))
     use_sprites.add(bck)
     use_sprites.add(frw)
     use_sprites.add(exi)
     if num[2] == mx[num[0], num[1]] and num not in finale.keys():
-        ch1 = Button([width/2, 232*k], '', font, (0, 0, 0), btup, (width, 475*k), btn[num[0], num[1], 1][1])
-        ch2 = Button([width/2, height/2 + 231*k], '', font, (0, 0, 0), btdn, (width, 605*k), btn[num[0], num[1], 2][1])
+        ch1 = Button([width / 2, 232 * k], '', font, (0, 0, 0), btup, (width, 475 * k), btn[num[0], num[1], 1][1])
+        ch2 = Button([width / 2, height / 2 + 231 * k], '', font, (0, 0, 0), btdn, (width, 605 * k), btn[num[0], num[1], 2][1])
         use_sprites.add(ch1)
         use_sprites.add(ch2)
-        textpos = (width/2, 330*k)
+        textpos = (width / 2, 330 * k)
         blit_text(ch1.image, btn[num[0], num[1], 1][0], textpos, font)
-        textpos = (width/2, 80*k)
+        textpos = (width / 2, 80 * k)
         blit_text(ch2.image, btn[num[0], num[1], 2][0], textpos, font)
     if num in finale.keys():
         ch1 = Button([width / 2, 232 * k], '', font, (0, 0, 0), btup, (width, 475 * k), (-1, finale[num]))
@@ -147,8 +144,7 @@ def level(num):
         textpos = (width / 2, 80 * k)
         blit_text(ch2.image, 'THe EnD', textpos, font)
 
-
-    textpos = (220*k, 835*k)
+    textpos = (220 * k, 835 * k)
     blit_text(dlg.image, text[num], textpos, font)
 
 
