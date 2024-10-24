@@ -9,9 +9,9 @@ class Draw:
         self.sc_map = sc_map
         self.font = pygame.font.SysFont('Arial', 36, bold=True) # для таймера
         # под единицей картинка стен, под S - потолок/небо, W - финиш (win)
-        self.textures = {'1': pygame.image.load('../images/wall.jpg').convert(),
+        self.textures = {'1': pygame.image.load('../images/img_3.png').convert(),
                          'W': pygame.image.load('../images/img_3.png').convert()
-                         # 'S': pygame.image.load('').convert()
+                         # 'S': pygame.image.load('../images/').convert()
                          }
         self.time_finish = time_finish
 
@@ -21,7 +21,7 @@ class Draw:
         # w, h = pygame.display.get_surface().get_size()
         # self.sc.blit(self.textures['S'], (sky_offset - w, 0))
         # self.sc.blit(self.textures['S'], (sky_offset + w, 0))
-        pygame.draw.rect(self.sc, SKY, (0, 0, WIDTH, HALF_HEIGHT))
+        pygame.draw.rect(self.sc, BLACK, (0, 0, WIDTH, HALF_HEIGHT))
         pygame.draw.rect(self.sc, FLOOR, (0, HALF_HEIGHT, WIDTH, HALF_HEIGHT))
 
     def walls(self, player_pos, player_angle):

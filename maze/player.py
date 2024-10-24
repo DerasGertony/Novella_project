@@ -62,9 +62,9 @@ class Player:
             dy = player_speed * cos_a
             self.detect_collision(dx, dy)
         if keys[pygame.K_LEFT]:
-            self.angle -= 0.01 * self.freeze
+            self.angle -= 0.025 * self.freeze
         if keys[pygame.K_RIGHT]:
-            self.angle += 0.01 * self.freeze
+            self.angle += 0.025 * self.freeze
         self.rect.center = self.x, self.y
 
 

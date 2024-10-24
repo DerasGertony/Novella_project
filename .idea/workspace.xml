@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="02a80fc5-fbb0-4f75-a380-fe87e78c48f3" name="Changes" comment="comm">
+      <change beforePath="$PROJECT_DIR$/maze/const.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze/const.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maze/draw.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze/draw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maze/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze/map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maze/maze.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze/maze.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/maze/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze/player.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="race_game" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;nydeg&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DerasGertony/Novella_project.git&quot;,
+    &quot;accountId&quot;: &quot;19513bf6-3c6c-4b12-8816-a233bc38c83f&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2n9oQpxEEcPDtaNxeTQ5eGevh8X" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.const.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.maze.executor&quot;: &quot;Run&quot;,
+    &quot;Python.race.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ray_casting_func.executor&quot;: &quot;Run&quot;,
+    &quot;Python.wakeUp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;maze__game&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/HONOR/PycharmProjects/Novella_project&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\HONOR\PycharmProjects\Novella_project" />
+      <recent name="C:\Users\HONOR\PycharmProjects\Novella_project\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\HONOR\PycharmProjects\Novella_project\images" />
+      <recent name="C:\Users\HONOR\PycharmProjects\Novella_project\maze" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.maze">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Game" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (firstproj)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="maze" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Novella_project" />
+      <option name="ENV_FILES" value="$PROJECT_DIR$/maze/maze.py" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/maze" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/maze/maze.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.maze" />
+        <item itemvalue="Python.maze" />
+        <item itemvalue="Python.maze" />
+        <item itemvalue="Python.maze" />
+        <item itemvalue="Python.maze" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-ce3d9afa04ac-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.20224.347" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\HONOR\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="02a80fc5-fbb0-4f75-a380-fe87e78c48f3" name="Changes" comment="" />
+      <created>1728394640566</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728394640566</updated>
+    </task>
+    <task id="LOCAL-00001" summary="некст поменяю принцип движения + накидаю стилечка">
+      <option name="closed" value="true" />
+      <created>1728394965566</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1728394965566</updated>
+    </task>
+    <task id="LOCAL-00002" summary="исправил спавн машинок и поменял принцип движения">
+      <option name="closed" value="true" />
+      <created>1728402435672</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1728402435672</updated>
+    </task>
+    <task id="LOCAL-00003" summary="нет картинки автобуса, остальное в целом готов">
+      <option name="closed" value="true" />
+      <created>1728432790600</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1728432790600</updated>
+    </task>
+    <task id="LOCAL-00004" summary="добавил спрайт автобуса, пунктир, убрал зеленые границы">
+      <option name="closed" value="true" />
+      <created>1728490770635</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1728490770635</updated>
+    </task>
+    <task id="LOCAL-00005" summary="добавил пару комментариев и констант">
+      <option name="closed" value="true" />
+      <created>1728492472579</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1728492472579</updated>
+    </task>
+    <task id="LOCAL-00006" summary="переименовал">
+      <option name="closed" value="true" />
+      <created>1728591241390</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1728591241390</updated>
+    </task>
+    <task id="LOCAL-00007" summary="переименовал">
+      <option name="closed" value="true" />
+      <created>1728593900876</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1728593900876</updated>
+    </task>
+    <task id="LOCAL-00008" summary="готово перемещение без коллизий">
+      <option name="closed" value="true" />
+      <created>1729194153352</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1729194153352</updated>
+    </task>
+    <task id="LOCAL-00009" summary="надо картинки стен и потолка + разобраться с плывущими стенами + реализовать победу в игре">
+      <option name="closed" value="true" />
+      <created>1729266853828</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1729266853828</updated>
+    </task>
+    <task id="LOCAL-00010" summary="не плывет больше стена">
+      <option name="closed" value="true" />
+      <created>1729296841042</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1729296841042</updated>
+    </task>
+    <task id="LOCAL-00011" summary="все готово кроме картинок">
+      <option name="closed" value="true" />
+      <created>1729370147753</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1729370147753</updated>
+    </task>
+    <task id="LOCAL-00012" summary="с картинками">
+      <option name="closed" value="true" />
+      <created>1729431799633</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1729431799633</updated>
+    </task>
+    <task id="LOCAL-00013" summary="поправил названия">
+      <option name="closed" value="true" />
+      <created>1729432285347</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1729432285347</updated>
+    </task>
+    <task id="LOCAL-00014" summary="коммы добавил">
+      <option name="closed" value="true" />
+      <created>1729687266593</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1729687266593</updated>
+    </task>
+    <task id="LOCAL-00015" summary="коммы добавил и условие победы">
+      <option name="closed" value="true" />
+      <created>1729688087320</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1729688087320</updated>
+    </task>
+    <task id="LOCAL-00016" summary="коммы добавил и условие победы">
+      <option name="closed" value="true" />
+      <created>1729688102565</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1729688102565</updated>
+    </task>
+    <task id="LOCAL-00017" summary="коммы добавил и условие победы">
+      <option name="closed" value="true" />
+      <created>1729688153433</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1729688153433</updated>
+    </task>
+    <task id="LOCAL-00018" summary="comm">
+      <option name="closed" value="true" />
+      <created>1729690373216</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1729690373216</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="некст поменяю принцип движения + накидаю стилечка" />
+    <MESSAGE value="исправил спавн машинок и поменял принцип движения" />
+    <MESSAGE value="нет картинки автобуса, остальное в целом готов" />
+    <MESSAGE value="добавил спрайт автобуса, пунктир, убрал зеленые границы" />
+    <MESSAGE value="добавил пару комментариев и констант" />
+    <MESSAGE value="переименовал" />
+    <MESSAGE value="готово перемещение без коллизий" />
+    <MESSAGE value="надо картинки стен и потолка + разобраться с плывущими стенами + реализовать победу в игре" />
+    <MESSAGE value="не плывет больше стена" />
+    <MESSAGE value="все готово кроме картинок" />
+    <MESSAGE value="с картинками" />
+    <MESSAGE value="поправил названия" />
+    <MESSAGE value="коммы добавил" />
+    <MESSAGE value="коммы добавил и условие победы" />
+    <MESSAGE value="comm" />
+    <option name="LAST_COMMIT_MESSAGE" value="comm" />
+  </component>
+</project>

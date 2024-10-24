@@ -1,0 +1,16 @@
+Index: maze/draw.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from math import floor\r\n\r\nimport pygame\r\nfrom const import *\r\nfrom ray_casting_func import ray_casting\r\n\r\n\r\nclass Draw:\r\n    def __init__(self, sc, sc_map, time_finish):\r\n        self.sc = sc\r\n        self.sc_map = sc_map\r\n        self.font = pygame.font.SysFont('Arial', 36, bold=True) # для таймера\r\n        # под единицей картинка стен, под S - потолок/небо, W - финиш (win)\r\n        self.textures = {'1': pygame.image.load('../images/wall.jpg').convert(),\r\n                         'W': pygame.image.load('../images/img_3.png').convert()\r\n                         # 'S': pygame.image.load('').convert()\r\n                         }\r\n        self.time_finish = time_finish\r\n\r\n    def back(self, angle):\r\n        # sky_offset = -5 * math.degrees(angle) % WIDTH\r\n        # self.sc.blit(self.textures['S'], (sky_offset, 0))\r\n        # w, h = pygame.display.get_surface().get_size()\r\n        # self.sc.blit(self.textures['S'], (sky_offset - w, 0))\r\n        # self.sc.blit(self.textures['S'], (sky_offset + w, 0))\r\n        pygame.draw.rect(self.sc, SKY, (0, 0, WIDTH, HALF_HEIGHT))\r\n        pygame.draw.rect(self.sc, FLOOR, (0, HALF_HEIGHT, WIDTH, HALF_HEIGHT))\r\n\r\n    def walls(self, player_pos, player_angle):\r\n        ray_casting(self.sc, player_pos, player_angle, self.textures)\r\n\r\n    def timer(self, time_now):\r\n        if self.time_finish - int(time_now) <= 0:\r\n            pygame.quit() # тут окно проигрыша\r\n        else:\r\n            render = self.font.render(str(self.time_finish - int(time_now)), 0, DARKRED)\r\n            w, h = pygame.display.get_surface().get_size()\r\n            self.sc.blit(render, (w // 2 - 20,  5))
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/maze/draw.py b/maze/draw.py
+--- a/maze/draw.py	(revision 56e17889e13acc5d5a51e17f02fd242837ea7bcb)
++++ b/maze/draw.py	(date 1729431852411)
+@@ -1,5 +1,3 @@
+-from math import floor
+-
+ import pygame
+ from const import *
+ from ray_casting_func import ray_casting

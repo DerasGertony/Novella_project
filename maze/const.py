@@ -3,14 +3,14 @@ import time
 
 # время на прохождение в сек
 
-delta_time = 120
+delta_time = 100
 
 # произвольно
 
 WIDTH, HEIGHT = 1200, 800
 HALF_WIDTH = WIDTH // 2
 HALF_HEIGHT = HEIGHT // 2
-FPS = 60
+FPS = 120
 TILE = 100
 FPS_POS = (WIDTH - 65, 5)
 MAP_SCALE = 5
@@ -35,7 +35,7 @@ TEXTURE_SCALE = TEXTURE_WIDTH // TILE
 
 player_pos = (TILE * 1.5, TILE * 1.5)
 player_angle = 0
-player_speed = 1.7
+player_speed = 3
 
 # цвета
 
@@ -50,6 +50,6 @@ cur_time = time.time_ns()
 
 def freeze():
     global cur_time
-    delta = (time.time_ns() - cur_time)/ 1000000000
+    delta = (time.time_ns() - cur_time) / 1000000000
     cur_time = time.time_ns()
     return delta
