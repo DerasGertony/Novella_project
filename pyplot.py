@@ -1302,6 +1302,9 @@ TimeSkip = {
 
 
 
-back = {
+backs = {
+    (1,0,0): mainbg,
+(2,0,0): mainbg,
+(3,0,0): mainbg,
 
 }
