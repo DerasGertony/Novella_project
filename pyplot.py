@@ -1321,6 +1321,7 @@ TimeSkip = {
 
 backs = {
     (1,0,0): mainbg,
+    (1,1,1):alarm,
     (2,0,0): mainbg,
     (3,0,0): mainbg,
 

@@ -86,10 +86,20 @@ def blit_text(surface, text, pos, font, color=pygame.Color('gray')):
 
 
 def level(num):
-    global nm
+    global nm, tfon
+
     use_sprites.empty()
     dec_sprites.empty()
+
     nm = num
+    if num in TimeSkip.keys():
+        back = BackGround(tsk)
+        dec_sprites.add(back)
+        for i in range(15):
+            dec_sprites.update()
+            screen.fill((0, 0, 0))
+            dec_sprites.draw(screen)
+            pygame.display.flip()
     if num == (0, 0):
         exit(0)
     if num == (-1, 0):
@@ -125,8 +135,8 @@ def level(num):
     use_sprites.add(frw)
     use_sprites.add(exi)
     if num[2] == mx[num[0], num[1]] and num not in finale.keys():
-        ch1 = Button([width / 2, 232 * k], '', font, (0, 0, 0), btup, (width, 475 * k), btn[num[0], num[1], 1][1])
-        ch2 = Button([width / 2, height / 2 + 231 * k], '', font, (0, 0, 0), btdn, (width, 605 * k), btn[num[0], num[1], 2][1])
+        ch1 = Button([width / 2, (height * 950/2160)/2+ k*50], '', font, (0, 0, 0), btup, (width, 475 * k), btn[num[0], num[1], 1][1])
+        ch2 = Button([width / 2, (height * 1210/2160)/2 + height*950/2160], '', font, (0, 0, 0), btdn, (width, 605 * k), btn[num[0], num[1], 2][1])
         use_sprites.add(ch1)
         use_sprites.add(ch2)
         textpos = (width / 2, 330 * k)
@@ -184,4 +194,4 @@ while True:
     dec_sprites.draw(screen)
     use_sprites.draw(screen)
     pygame.display.flip()
-    clock.tick(60)
+    clock.tick(30)

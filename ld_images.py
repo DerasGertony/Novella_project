@@ -5,6 +5,7 @@ busted = pygame.image.load('Pictures/badend.png')
 good = pygame.image.load('Pictures/goodend.png')
 btup = pygame.image.load('Pictures/btnsup.png')
 btdn = pygame.image.load('Pictures/btnsdn.png')
+tsk = pygame.image.load('Pictures/tsk.png')
 # Backs
 startback = pygame.image.load('images/stbc.jpg')
 bus = pygame.image.load('Pictures/backgrounds/bus/3.jpg')
