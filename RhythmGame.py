@@ -5,12 +5,11 @@ import Classes.HealthPointClass as HealthPointClass
 
 pygame.init()
 
-screen = pygame.display.set_mode((const.WIDTH_RYTHM_WINDOW, const.HEIGHT_RYTHM_WINDOW))
-clock = pygame.time.Clock()
-
-
 def rhythm_game_start(args):
     healt_points, wait_new_msg, wait_answer, rythm_line = args
+
+    screen = pygame.display.set_mode((const.WIDTH_RYTHM_WINDOW, const.HEIGHT_RYTHM_WINDOW))
+    clock = pygame.time.Clock()
 
     backgroud = pygame.image.load("./images/rhythm_background.jpg").convert()
     backgroud = pygame.transform.scale(backgroud, (const.WIDTH_RYTHM_WINDOW, const.HEIGHT_RYTHM_WINDOW))
@@ -57,8 +56,6 @@ def rhythm_game_start(args):
                 else:
                     msg.draw_Symbol("WRONG_ANSWER")
                     HP.pop() # удаление сердца за неправильный ответ
-
-                    print("HP LOG: wrong answer")
         
         # Если с момента Правильного ответа прошло WAIT_NEW_MSG_TIME, то отображаем новую карточку с заданием
         try: 
@@ -80,7 +77,6 @@ def rhythm_game_start(args):
                 ticks_next_msg = pygame.time.get_ticks()
                 
                 HP.pop() # удаление сердца за неправильный ответ
-                print("HP LOG: long waiting")
 
         except:
             pass
@@ -93,8 +89,6 @@ def rhythm_game_start(args):
 
         if len(HP) == 0:
             pygame.display.update()
-
-            print("LOSE SCREEN! RESTART GAME")
             is_running = False
 
             pygame.quit()
@@ -105,4 +99,4 @@ def rhythm_game_start(args):
         pygame.display.update()
         
 
-rhythm_game_start(const.setting_rythm_1lvl)
+# rhythm_game_start(const.setting_rythm_1lvl)

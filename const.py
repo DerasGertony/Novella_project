@@ -77,7 +77,7 @@ frequency = 40 # частота появления машин (чем больш
 #    |----------------------------------|
 
 WIDTH_RYTHM_WINDOW, HEIGHT_RYTHM_WINDOW = 1100, 800
-btnEventId = {"RIGHT": 1073741903, "LEFT": 1073741904, "DOWN": 1073741905, "UP":1073741906}
+btnEventId = {"RIGHT": 1073741903, "LEFT": 1073741904, "DOWN": 1073741905, "UP":1073741906, "SPACE": 32}
 
 rhythmLine_1LVL = ["RIGHT", "LEFT", "DOWN", "DOWN", "UP"] # список клавиш, которые надо  (1LVL)
 setting_rythm_1lvl = (5, 3, 5, rhythmLine_1LVL) # healt_points, wait_new_msg, wait_answer
@@ -87,3 +87,13 @@ setting_rythm_2lvl = (3, 2, 3, rhythmLine_1LVL) # healt_points, wait_new_msg, wa
 
 rhythmLine_3LVL = ["RIGHT", "LEFT", "DOWN", "DOWN", "UP", "RIGHT", "LEFT", "DOWN", "UP", "LEFT", "RIGHT"] # список клавиш, которые надо  (3LVL)
 setting_rythm_3lvl = (2, 1, 2, rhythmLine_1LVL) # healt_points, wait_new_msg, wait_answer
+
+
+#    |----------------------------------|
+#    |  переменные для ПРОСЫПАШКИ ИГРЫ  |
+#    |----------------------------------|
+
+WIDTH_WAKEUP_WINDOW, HEIGHT_WAKEUP_WINDOW = 1100, 800
+setting_wakeup_1lvl = (1, 5) # уменьшение прогресса каждую секунду, уменьшение прогресса через 5сек
+setting_wakeup_2lvl = (2, 7)
+setting_wakeup_3lvl = (3, 10)
