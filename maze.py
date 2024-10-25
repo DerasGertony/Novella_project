@@ -1,8 +1,8 @@
 import pygame
 from pygame import K_ESCAPE, KEYDOWN
 from const import *
-from draw import Draw
-from player import Player
+from Classes.draw import Draw
+from Classes.player import Player
 
 
 # чтобы менять сложность, будем изменять размер карты в map и время на прохождение

@@ -1,6 +1,6 @@
 import pygame
 from const import *
-from map import collision_walls
+from Functions.map import collision_walls
 
 
 class Player:

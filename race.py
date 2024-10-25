@@ -1,8 +1,8 @@
 import pygame
 import random
 from const import *
-from bus import Bus
-from car import Car
+from Classes.bus import Bus
+from Classes.car import Car
 
 pygame.init()
 

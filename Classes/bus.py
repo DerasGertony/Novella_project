@@ -5,7 +5,7 @@ import pygame
 # класс для максима
 class Bus:
     def __init__(self, screen):
-        self.image = pygame.image.load('images/bus.png')
+        self.image = pygame.image.load('../images/bus.png')
         self.image = pygame.transform.scale(self.image, (BUS_WIDTH, BUS_HEIGHT))
         self.rect = self.image.get_rect(center=(WIDTH_CAR_WINDOW // 2, HEIGHT_CAR_WINDOW - BUS_HEIGHT - 10))
         self.lane = 1
