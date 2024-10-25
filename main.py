@@ -15,8 +15,8 @@ height = info.current_h
 
 screen = pygame.display.set_mode((width, height), pygame.FULLSCREEN | pygame.SCALED | pygame.HWSURFACE)
 game_started = False
-k = screen.get_size()[0] / width
-font = pygame.font.Font('TT Norms Pro Regular.otf', round(30 * k))
+
+font = pygame.font.Font('TT Norms Pro Regular.otf', 30)
 nm = (0, 0)
 tfon = home
 
@@ -125,7 +125,7 @@ def level(num):
         h1 = Hero(1500 , height / 2, hr[0], (1080 , height))
         dec_sprites.add(h1)
         if len(hr) == 2:
-            h2 = Hero(500 * k, height / 2, hr[1], (1080, height))
+            h2 = Hero(500, height / 2, hr[1], (1080, height))
             dec_sprites.add(h2)
     dlg = BackGround(dg)
     dec_sprites.add(dlg)
