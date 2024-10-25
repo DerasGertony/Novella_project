@@ -3,6 +3,11 @@ import sys
 import pygame
 from ld_images import *
 from pyplot import *
+import maze
+import race
+import RhythmGame
+import wakeUp
+import const
 
 # Configuration
 pygame.init()
@@ -20,88 +25,34 @@ nm = (0, 0)
 tfon = home
 
 # ПЕРЕКИНУТЬ В const.pe
-def wakeUpgame():
-    c = 0
-    while c!=1000:
-        c+=1
-        print("wakeUp")
-
-def start_race():
-    c = 0
-    while c!=1000:
-        c+=1
-        print("race")
-
-def start_maze():
-    c = 0
-    while c!=1000:
-        c+=1
-        print("maze")
-
-def rhythm_game_start():
-    c = 0
-    while c!=1000:
-        c+=1
-        print("rhythm_game_start")
-
-
-# after_that_message_run_game = set()
-# after_that_message_run_game.update([
-#     (1, 2, 2),
-#     (1, 5, 4),
-#     (1, 3, 5),
-#     (1, 6, 3),
-#     (1, 7, 9),
-#     (1, 4, 2),
-#     (1, 9, 8),
-
-#     (2, 2, 8),
-#     (2, 5, 2),
-#     (2, 7, 4),
-#     (2, 8, 1),
-#     (2, 9, 6),
-#     (2, 13, 2),
-#     (2, 15, 4),
-#     (2, 16, 1),
-#     (2, 25, 7),
-
-#     (3, 4, 4),
-#     (3, 6, 0),
-#     (3, 7, 0),
-#     (3, 8, 0),
-#     (3, 10, 2),
-#     (3, 16, 4),
-#     (3, 16, 5),
-#     (3, 17, 0)
-# ])
 
 obj_messageNum_to_game_func = {
-    (1, 2, 2): wakeUpgame, # 1lvl
-    (1, 5, 4): wakeUpgame,
-    (1, 3, 5): start_maze,
-    (1, 6, 3): start_maze,
-    (1, 7, 9): start_race,
-    (1, 4, 2): rhythm_game_start,
-    (1, 9, 8): rhythm_game_start,
+    (1, 2, 2): wakeUp.wakeUp, # 1lvl
+    (1, 5, 4): wakeUp.wakeUp,
+    (1, 3, 5): maze.start_maze,
+    (1, 6, 3): maze.start_maze,
+    (1, 7, 9): race.start_race,
+    (1, 4, 2): RhythmGame.rhythm_game_start,
+    (1, 9, 8): RhythmGame.rhythm_game_start,
 
-    (2, 2, 8): wakeUpgame, # 2lvl
-    (2, 5, 2): start_race,
-    (2, 7, 4): start_maze,
-    (2, 8, 1): start_race,
-    (2, 9, 6): wakeUpgame,
-    (2, 13, 2): start_race,
-    (2, 15, 4): start_maze,
-    (2, 16, 1): start_race,
-    (2, 25, 7): wakeUpgame,
+    (2, 2, 8): wakeUp.wakeUp, # 2lvl
+    (2, 5, 2): race.start_race,
+    (2, 7, 4): maze.start_maze,
+    (2, 8, 1): race.start_race,
+    (2, 9, 6): wakeUp.wakeUp,
+    (2, 13, 2): race.start_race,
+    (2, 15, 4): maze.start_maze,
+    (2, 16, 1): race.start_race,
+    (2, 25, 7): wakeUp.wakeUp,
 
-    (3, 4, 4): start_race, #3lvl
-    (3, 6, 0): rhythm_game_start,
-    (3, 7, 0): rhythm_game_start,
-    (3, 8, 0): rhythm_game_start,
-    (3, 10, 2): wakeUpgame,
-    (3, 16, 4): start_race,
-    (3, 16, 5): start_maze,
-    (3, 17, 0): rhythm_game_start
+    (3, 4, 4): race.start_race, #3lvl
+    (3, 6, 0): RhythmGame.rhythm_game_start,
+    (3, 7, 0): RhythmGame.rhythm_game_start,
+    (3, 8, 0): RhythmGame.rhythm_game_start,
+    (3, 10, 2): wakeUp.wakeUp,
+    (3, 16, 4): race.start_race,
+    (3, 16, 5): maze.start_maze,
+    (3, 17, 0): RhythmGame.rhythm_game_start
 
 }
 
@@ -225,31 +176,32 @@ def level(num):
     use_sprites.add(frw)
     use_sprites.add(exi)
 
-    print(f"\nMESSAGE \n {num} \n MESSAGE \n")
-
     if num in obj_messageNum_to_game_func.keys():
-        obj_messageNum_to_game_func[num]()
+        obj_messageNum_to_game_func[num](screen, width, height)
+    #obj_messageNum_to_game_func[(1, 4, 2)](screen, width, height)
 
     if num[2] == mx[num[0], num[1]] and num not in finale.keys():
-        ch1 = Button([width / 2, 282], '', font, (0, 0, 0), btup, (width, 475), btn[num[0], num[1], 1][1])
-        ch2 = Button([width / 2, height / 2 + 231], '', font, (0, 0, 0), btdn, (width, 605), btn[num[0], num[1], 2][1])
+        ch1 = Button([width / 2, height * 0.2], '', font, (0, 0, 0), btup, (width, height * 0.495),
+                     btn[num[0], num[1], 1][1])
+        ch2 = Button([width / 2, height * 0.72], '', font, (0, 0, 0), btdn, (width, height * 0.63),
+                     btn[num[0], num[1], 2][1])
         use_sprites.add(ch1)
         use_sprites.add(ch2)
-        textpos = (width / 2, 330)
+        textpos = (int(width / 2 - width * 0.0052 * len(btn[num[0], num[1], 1][0])), height * 0.344)
         blit_text(ch1.image, btn[num[0], num[1], 1][0], textpos, font)
-        textpos = (width / 2, 80)
+        textpos = (int(width / 2 - width * 0.0052 * len(btn[num[0], num[1], 2][0])), height * 0.083)
         blit_text(ch2.image, btn[num[0], num[1], 2][0], textpos, font)
-
     if num in finale.keys():
-        ch1 = Button([width / 2, 282], '', font, (0, 0, 0), btup, (width, 475), (-1, finale[num]))
-        ch2 = Button([width / 2, height / 2 + 231], '', font, (0, 0, 0), btdn, (width, 605),
+        ch1 = Button([width / 2, height * 0.2], '', font, (0, 0, 0), btup, (width, height * 0.495),
+                     (-1, finale[num]))
+        ch2 = Button([width / 2, height * 0.72], '', font, (0, 0, 0), btdn, (width, height * 0.63),
                      (-1, finale[num]))
         use_sprites.add(ch1)
         use_sprites.add(ch2)
-        textpos = (width / 2, 330 )
-        blit_text(ch1.image, 'THe EnD', textpos, font)
-        textpos = (width / 2, 80 )
-        blit_text(ch2.image, 'THe EnD', textpos, font)
+        textpos = (int(width / 2 - width * 0.0052 * 7), height * 0.344)
+        blit_text(ch1.image, 'THE END', textpos, font)
+        textpos = (int(width / 2 - width * 0.0052 * 7), height * 0.083)
+        blit_text(ch2.image, 'THE END', textpos, font)
 
     textpos = (width * 0.143, height * 0.76)
     blit_text(dlg.image, text[num], textpos, font)
@@ -262,7 +214,7 @@ temp = 0
 clock = pygame.time.Clock()
 while True:
     screen.fill((0, 0, 0))
-
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
