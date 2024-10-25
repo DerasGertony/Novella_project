@@ -3,25 +3,25 @@ import random
 
 pygame.init()
 
-WIDTH, HEIGHT = 600, 800
+WIDTH_CAR_WINDOW, HEIGHT_CAR_WINDOW = 600, 800
 FPS = 60
 CAR_WIDTH, CAR_HEIGHT = 50, 100
 BUS_SCALE = 1.44 # во сколько раз автобус больше чем машины
 BUS_WIDTH, BUS_HEIGHT = BUS_SCALE * CAR_WIDTH, BUS_SCALE * CAR_HEIGHT
 BUS_SPEED, CAR_SPEED = 4, 7
-LANE_WIDTH = WIDTH // 3
+LANE_WIDTH = WIDTH_CAR_WINDOW // 3
 MIN_DISTANCE = 100 # минимальное расстояние между машинами
 WIN = 40 # столько машин надо преодолеть, чтобы выиграть
 
-length_line = HEIGHT // 10 # длина пунктирной линии
-distance = HEIGHT // length_line * 3 # расстояние между пунктирными линиями
+length_line = HEIGHT_CAR_WINDOW // 10 # длина пунктирной линии
+distance = HEIGHT_CAR_WINDOW // length_line * 3 # расстояние между пунктирными линиями
 frequency = 40 # частота появления машин (чем больше число - тем реже)
 
 RED = (255, 0, 0)
 GREEN = (0, 128, 0)
 WHITE = (255, 255, 255)
 
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+screen = pygame.display.set_mode((WIDTH_CAR_WINDOW, HEIGHT_CAR_WINDOW))
 pygame.display.set_caption("Гони")
 
 files_cars = ['images/blue_car.png', 'images/red_car.png']
@@ -32,7 +32,7 @@ class Bus:
     def __init__(self):
         self.image = pygame.image.load('images/bus.png')
         self.image = pygame.transform.scale(self.image, (BUS_WIDTH, BUS_HEIGHT))
-        self.rect = self.image.get_rect(center=(WIDTH // 2, HEIGHT - BUS_HEIGHT - 10))
+        self.rect = self.image.get_rect(center=(WIDTH_CAR_WINDOW // 2, HEIGHT_CAR_WINDOW - BUS_HEIGHT - 10))
         self.lane = 1
         self.target_x = self.rect.x
 
@@ -106,7 +106,7 @@ def start_race():
 
         for car in cars[:]:
             car.update()
-            if car.rect.y > HEIGHT:
+            if car.rect.y > HEIGHT_CAR_WINDOW:
                 cars.remove(car)
 
         for car in cars:
@@ -116,11 +116,11 @@ def start_race():
         # отрисовка
         screen.fill((90, 90, 90))
 
-        for i in range(line_position + distance, HEIGHT + length_line, distance + length_line):
-            pygame.draw.line(screen, WHITE, [WIDTH // 3, i - distance],
-                             [WIDTH // 3, i - distance + length_line], 10)
-            pygame.draw.line(screen, WHITE, [WIDTH // 3 * 2, i - distance],
-                             [WIDTH // 3 * 2, i - distance + length_line], 10)
+        for i in range(line_position + distance, HEIGHT_CAR_WINDOW + length_line, distance + length_line):
+            pygame.draw.line(screen, WHITE, [WIDTH_CAR_WINDOW // 3, i - distance],
+                             [WIDTH_CAR_WINDOW // 3, i - distance + length_line], 10)
+            pygame.draw.line(screen, WHITE, [WIDTH_CAR_WINDOW // 3 * 2, i - distance],
+                             [WIDTH_CAR_WINDOW // 3 * 2, i - distance + length_line], 10)
 
         line_position += 5 # обязательно число, которое делит 10 без остатка
         if line_position == distance:
@@ -133,7 +133,6 @@ def start_race():
         pygame.display.flip()
         clock.tick(FPS)
 
-        # условие победы
         if count_cars == WIN and not cars:
             pygame.quit()
             break
