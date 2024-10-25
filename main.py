@@ -12,11 +12,9 @@ fpsClock = pygame.time.Clock()
 pygame.display.set_caption('HSE! STUDENT! LIFE!')
 width = info.current_w
 height = info.current_h
-
 screen = pygame.display.set_mode((width, height), pygame.FULLSCREEN | pygame.SCALED | pygame.HWSURFACE)
 game_started = False
-k = screen.get_size()[0] / width
-font = pygame.font.Font('TT Norms Pro Regular.otf', round(30 * k))
+font = pygame.font.Font('TT Norms Pro Regular.otf', 30)
 nm = (0, 0)
 tfon = home
 
