@@ -5,13 +5,13 @@ import random
 
 # то от чего уворачиваемся
 class Car:
-    def __init__(self, lane, files_cars, screen):
+    def __init__(self, lane, files_cars, screen, LANE_WIDTH):
         koef = random.randint(0, 1)
         self.image = pygame.image.load(files_cars[koef])
-        if koef == 0:
-            self.image = pygame.transform.rotozoom(self.image, 0, 0.12)
-        else:
-            self.image = pygame.transform.rotozoom(self.image, 0, 0.14)
+        # if koef == 0:
+        #     self.image = pygame.transform.rotozoom(self.image, 0, ())
+        # else:
+        self.image = pygame.transform.scale(self.image, (CAR_WIDTH, CAR_HEIGHT))
 
         x_position = lane * LANE_WIDTH + LANE_WIDTH // 2
 

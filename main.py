@@ -176,9 +176,9 @@ def level(num):
     use_sprites.add(frw)
     use_sprites.add(exi)
 
-    if num in obj_messageNum_to_game_func.keys():
-        obj_messageNum_to_game_func[num](screen, width, height)
-    #obj_messageNum_to_game_func[(1, 4, 2)](screen, width, height)
+    # if num in obj_messageNum_to_game_func.keys():
+    #     obj_messageNum_to_game_func[num](screen, width, height)
+    obj_messageNum_to_game_func[(1, 3, 5)](screen, width, height)
 
     if num[2] == mx[num[0], num[1]] and num not in finale.keys():
         ch1 = Button([width / 2, height * 0.2], '', font, (0, 0, 0), btup, (width, height * 0.495),

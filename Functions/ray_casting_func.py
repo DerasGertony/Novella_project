@@ -8,6 +8,8 @@ def ray_casting(sc, player_pos, player_angle, textures, window_w, window_h):
     ox, oy = player_pos
     xm, ym = map.mapping(ox, oy)
     cur_angle = player_angle - HALF_FOV
+
+    SCALE = window_w // NUM_RAYS  
     for ray in range(NUM_RAYS):
         sin_a = math.sin(cur_angle)
         cos_a = math.cos(cur_angle)
@@ -46,6 +48,6 @@ def ray_casting(sc, player_pos, player_angle, textures, window_w, window_h):
 
         wall_column = textures[texture].subsurface(offset * TEXTURE_SCALE, 0, TEXTURE_SCALE, TEXTURE_HEIGHT)
         wall_column = pygame.transform.scale(wall_column, (SCALE, proj_height))
-        sc.blit(wall_column, (ray * SCALE, HALF_HEIGHT - proj_height // 2))
+        sc.blit(wall_column, (ray * SCALE, window_h/2 - proj_height // 2))
 
         cur_angle += DELTA_ANGLE

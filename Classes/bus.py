@@ -4,13 +4,14 @@ import pygame
 
 # класс для максима
 class Bus:
-    def __init__(self, screen):
+    def __init__(self, screen, window_w, window_h, LANE_WIDTH):
         self.image = pygame.image.load('images/bus.png')
         self.image = pygame.transform.scale(self.image, (BUS_WIDTH, BUS_HEIGHT))
-        self.rect = self.image.get_rect(center=(WIDTH_CAR_WINDOW // 2, HEIGHT_CAR_WINDOW - BUS_HEIGHT - 10))
+        self.rect = self.image.get_rect(center=(window_w // 2, window_h - BUS_HEIGHT - 10))
         self.lane = 1
         self.target_x = self.rect.x
         self.screen = screen
+        self.LANE_WIDTH = LANE_WIDTH
 
     def move(self):
         keys = pygame.key.get_pressed()
@@ -19,7 +20,7 @@ class Bus:
         if keys[pygame.K_RIGHT] and self.lane < 2:
             self.lane += 1
 
-        self.target_x = self.lane * LANE_WIDTH + (LANE_WIDTH - BUS_WIDTH) // 2
+        self.target_x = self.lane * self.LANE_WIDTH + (self.LANE_WIDTH - BUS_WIDTH) // 2
 
         # насколько быстро автобус меняет свое местоположение по иксу
         if self.rect.x + BUS_SPEED < self.target_x:
