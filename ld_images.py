@@ -46,13 +46,17 @@ bi_sigma = pygame.image.load('Pictures/characters/игорь борисович 
 bus1 = pygame.image.load('Pictures/backgrounds/bus/1.jpg')
 bus2 = pygame.image.load('Pictures/backgrounds/bus/2.jpg')
 bus3 = pygame.image.load('Pictures/backgrounds/bus/3.jpg')
-
+busout = pygame.image.load('Pictures/backgrounds/bstop.jpg')
+math = pygame.image.load('Pictures/backgrounds/matan.jpg')
+table = pygame.image.load('Pictures/backgrounds/tv.png')
 # HOME
 alarm = pygame.image.load('Pictures/backgrounds/home/alarm.png')
 kitchen = pygame.image.load('Pictures/backgrounds/home/kitchen.png')
 phone = pygame.image.load('Pictures/backgrounds/home/phone.png')
 mainbg = pygame.image.load('Pictures/backgrounds/home/main_back.png')
-
+magas = pygame.image.load('Pictures/backgrounds/пятерочка.png')
+kond= pygame.image.load('Pictures/backgrounds/kond.jpg')
+tt = pygame.image.load('Pictures/backgrounds/phone/tt.jpg')
 # OUTSIDE
 CrowdedModernStreet = pygame.image.load('Pictures/backgrounds/outside/3.jpg')
 CrowdedStreet = pygame.image.load('Pictures/backgrounds/outside/5.jpg')

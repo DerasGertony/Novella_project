@@ -12,7 +12,8 @@ fpsClock = pygame.time.Clock()
 pygame.display.set_caption('HSE! STUDENT! LIFE!')
 width = info.current_w
 height = info.current_h
-screen = pygame.display.set_mode((width, height), pygame.FULLSCREEN | pygame.SCALED)
+
+screen = pygame.display.set_mode((0, 0))
 game_started = False
 k = screen.get_size()[0] / width
 font = pygame.font.Font('TT Norms Pro Regular.otf', round(30 * k))
@@ -95,7 +96,7 @@ def level(num):
     if num in TimeSkip.keys():
         back = BackGround(tsk)
         dec_sprites.add(back)
-        for i in range(15):
+        for i in range(25):
             dec_sprites.update()
             screen.fill((0, 0, 0))
             dec_sprites.draw(screen)
@@ -144,8 +145,8 @@ def level(num):
         textpos = (width / 2, 80 * k)
         blit_text(ch2.image, btn[num[0], num[1], 2][0], textpos, font)
     if num in finale.keys():
-        ch1 = Button([width / 2, 232 * k], '', font, (0, 0, 0), btup, (width, 475 * k), (-1, finale[num]))
-        ch2 = Button([width / 2, height / 2 + 231 * k], '', font, (0, 0, 0), btdn, (width, 605 * k),
+        ch1 = Button([width / 2, (height * 950/2160)/2+ k*50], '', font, (0, 0, 0), btup, (width, 475 * k), (-1, finale[num]))
+        ch2 = Button([width / 2, (height * 1210/2160)/2 + height*950/2160], '', font, (0, 0, 0), btdn, (width, 605 * k),
                      (-1, finale[num]))
         use_sprites.add(ch1)
         use_sprites.add(ch2)
