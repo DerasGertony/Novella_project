@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="02a80fc5-fbb0-4f75-a380-fe87e78c48f3" name="Changes" comment="поменял названия переменных">
-      <change beforePath="$PROJECT_DIR$/maze/const.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze/const.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maze/draw.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze/draw.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maze/map.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze/map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maze/maze.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze/maze.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/maze/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/maze/player.py" afterDir="false" />
-    </list>
+    <list default="true" id="02a80fc5-fbb0-4f75-a380-fe87e78c48f3" name="Changes" comment="правки" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,6 +51,7 @@
     "Python.ray_casting_func.executor": "Run",
     "Python.wakeUp.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "race__game",
     "last_opened_file_path": "C:/Users/HONOR/PycharmProjects/Novella_project",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
@@ -72,28 +67,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.maze">
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Game" />
       <option name="ENV_FILES" value="" />
@@ -138,70 +111,6 @@
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Docutils task">
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Sphinx task">
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="tests" factoryName="Doctests">
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="FOLDER_NAME" value="" />
-      <option name="TEST_TYPE" value="TEST_SCRIPT" />
-      <option name="PATTERN" value="" />
-      <option name="USE_PATTERN" value="false" />
       <method v="2" />
     </configuration>
     <list>
@@ -411,6 +320,7 @@
     <MESSAGE value="коммы добавил" />
     <MESSAGE value="коммы добавил и условие победы" />
     <MESSAGE value="comm" />
-    <option name="LAST_COMMIT_MESSAGE" value="comm" />
+    <MESSAGE value="правки" />
+    <option name="LAST_COMMIT_MESSAGE" value="правки" />
   </component>
 </project>

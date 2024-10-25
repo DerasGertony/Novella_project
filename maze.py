@@ -11,8 +11,8 @@ pygame.init()
 
 # запуск
 def start_maze():
-    sc = pygame.display.set_mode((WIDTH, HEIGHT), pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.FULLSCREEN)
-    sc_map = pygame.Surface((WIDTH // MAP_SCALE, HEIGHT // MAP_SCALE))
+    sc = pygame.display.set_mode((WIDTH_MAZE_WINDOW, HEIGHT_MAZE_WINDOW), pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.FULLSCREEN)
+    sc_map = pygame.Surface((WIDTH_MAZE_WINDOW // MAP_SCALE, HEIGHT_MAZE_WINDOW // MAP_SCALE))
     pygame.mouse.set_visible(False)
     clock = pygame.time.Clock()
     player = Player()

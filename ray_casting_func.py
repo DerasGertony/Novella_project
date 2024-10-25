@@ -15,7 +15,7 @@ def ray_casting(sc, player_pos, player_angle, textures):
 
         # вертикали
         x, dx = (xm + TILE, 1) if cos_a >= 0 else (xm, -1)
-        for i in range(0, WIDTH, TILE):
+        for i in range(0, WIDTH_MAZE_WINDOW, TILE):
             depth_v = (x - ox) / cos_a
             yv = oy + depth_v * sin_a
             tile_v = mapping(x + dx, yv)
@@ -27,7 +27,7 @@ def ray_casting(sc, player_pos, player_angle, textures):
 
         # горизонтали
         y, dy = (ym + TILE, 1) if sin_a >= 0 else (ym, -1)
-        for i in range(0, HEIGHT, TILE):
+        for i in range(0, HEIGHT_MAZE_WINDOW, TILE):
             depth_h = (y - oy) / sin_a
             xh = ox + depth_h * cos_a
             tile_h = mapping(xh, y + dy)
@@ -41,7 +41,7 @@ def ray_casting(sc, player_pos, player_angle, textures):
         offset = int(offset) % TILE
         depth *= math.cos(player_angle - cur_angle) # избавление от эффекта рыбьего глаза
         depth = max(depth, 0.00001)
-        proj_height = min(int(PROJ_COEFF / depth), 6 * HEIGHT)
+        proj_height = min(int(PROJ_COEFF / depth), 6 * HEIGHT_MAZE_WINDOW)
 
         wall_column = textures[texture].subsurface(offset * TEXTURE_SCALE, 0, TEXTURE_SCALE, TEXTURE_HEIGHT)
         wall_column = pygame.transform.scale(wall_column, (SCALE, proj_height))
