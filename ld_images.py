@@ -22,6 +22,7 @@ dg = pygame.image.load('images/dgf.png')
 ex = pygame.image.load('images/btexit.png')
 sk = pygame.image.load('images/btfr.png')
 bc = pygame.image.load('images/btbc.png')
+ak = pygame.image.load('images/Group 215.png')
 
 # Heroes
 gm_good = pygame.image.load('Pictures/characters/кокет бабка.png')
