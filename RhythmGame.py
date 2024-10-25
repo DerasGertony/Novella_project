@@ -1,16 +1,23 @@
 import pygame
-import MessageClass
-import HealthPointClass
+import Classes.MessageClass as MessageClass
+import Classes.HealthPointClass as HealthPointClass
 
 pygame.init()
 
-screen = pygame.display.set_mode((1100,800))
+WIDTH, HEIGHT = 1100, 800
+
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
 clock = pygame.time.Clock()
-btnEventId = {"RIGHT": 1073741903, "LEFT": 1073741904, "DOWN": 1073741905, "UP":1073741906}
 
 FPS = 60
 
 def rhythm_game_start(healt_points, wait_new_msg, wait_answer):
+    btnEventId = {"RIGHT": 1073741903, "LEFT": 1073741904, "DOWN": 1073741905, "UP":1073741906}
+
+    backgroud = pygame.image.load("./images/rhythm_background.jpg").convert()
+    backgroud = pygame.transform.scale(backgroud, (WIDTH, HEIGHT))
+    screen.blit(backgroud, (0,0))
+    
     WAIT_NEW_MSG_TIME = wait_new_msg # время до отображения нового сообщения
     WAIT_ANSWER_TIME = wait_answer # время ожидания ответа
     
@@ -81,7 +88,7 @@ def rhythm_game_start(healt_points, wait_new_msg, wait_answer):
         except:
             pass
 
-        screen.fill((0,0,0))
+        screen.blit(backgroud, (0,0))
         
         if not(msg.updating):
             msg.draw_Symbol(rhythmLine[task_num])
@@ -90,7 +97,7 @@ def rhythm_game_start(healt_points, wait_new_msg, wait_answer):
         if len(HP) == 0:
             pygame.display.update()
 
-            print("LOSE SCREEN AND RESTART GAME")
+            print("LOSE SCREEN! RESTART GAME")
             is_running = False
 
             pygame.quit()
