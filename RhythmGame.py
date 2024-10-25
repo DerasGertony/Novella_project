@@ -1,27 +1,24 @@
 import pygame
+import const
 import Classes.MessageClass as MessageClass
 import Classes.HealthPointClass as HealthPointClass
 
 pygame.init()
 
-WIDTH, HEIGHT = 1100, 800
-
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
+screen = pygame.display.set_mode((const.WIDTH_RYTHM_WINDOW, const.HEIGHT_RYTHM_WINDOW))
 clock = pygame.time.Clock()
 
-FPS = 60
 
-def rhythm_game_start(healt_points, wait_new_msg, wait_answer):
-    btnEventId = {"RIGHT": 1073741903, "LEFT": 1073741904, "DOWN": 1073741905, "UP":1073741906}
+def rhythm_game_start(args):
+    healt_points, wait_new_msg, wait_answer, rythm_line = args
 
     backgroud = pygame.image.load("./images/rhythm_background.jpg").convert()
-    backgroud = pygame.transform.scale(backgroud, (WIDTH, HEIGHT))
+    backgroud = pygame.transform.scale(backgroud, (const.WIDTH_RYTHM_WINDOW, const.HEIGHT_RYTHM_WINDOW))
     screen.blit(backgroud, (0,0))
     
     WAIT_NEW_MSG_TIME = wait_new_msg # время до отображения нового сообщения
     WAIT_ANSWER_TIME = wait_answer # время ожидания ответа
-    
-    rhythmLine = ["RIGHT", "LEFT", "DOWN", "DOWN", "UP"] # список клавиш, которые надо нажать
+
     task_num = 0 # номер задания в настоящий момент
 
     HP = [] # массив с классами "сердца"
@@ -33,14 +30,14 @@ def rhythm_game_start(healt_points, wait_new_msg, wait_answer):
         hp_x_cord+= 40
 
     msg = MessageClass.Message(screen)
-    msg.draw_Symbol(rhythmLine[task_num])
+    msg.draw_Symbol(rythm_line[task_num])
 
     tick_update_msg = pygame.time.get_ticks() # получение тиков в данный момент
     
     is_running = True
     while is_running:
 
-        clock.tick(FPS)
+        clock.tick(const.FPS)
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -49,7 +46,7 @@ def rhythm_game_start(healt_points, wait_new_msg, wait_answer):
 
             #Обработка нажатых клавиш
             if event.type == pygame.KEYDOWN:
-                if not(msg.updating) and event.key == btnEventId[ rhythmLine[task_num] ]: # проверка на условие нажатая клавиша == ожидаемой клавише
+                if not(msg.updating) and event.key == const.btnEventId[ rythm_line[task_num] ]: # проверка на условие нажатая клавиша == ожидаемой клавише
                     print("Cool")
 
                     msg.updating = True
@@ -91,7 +88,7 @@ def rhythm_game_start(healt_points, wait_new_msg, wait_answer):
         screen.blit(backgroud, (0,0))
         
         if not(msg.updating):
-            msg.draw_Symbol(rhythmLine[task_num])
+            msg.draw_Symbol(rythm_line[task_num])
 
 
         if len(HP) == 0:
@@ -108,4 +105,4 @@ def rhythm_game_start(healt_points, wait_new_msg, wait_answer):
         pygame.display.update()
         
 
-rhythm_game_start(healt_points = 3, wait_new_msg = 3, wait_answer = 5)
+rhythm_game_start(const.setting_rythm_1lvl)
