@@ -35,7 +35,6 @@ TEXTURE_SCALE = TEXTURE_WIDTH // TILE
 
 player_pos = (TILE * 1.5, TILE * 1.5)
 player_angle = 0
-player_speed = 6
 
 # цвета
 
