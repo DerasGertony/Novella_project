@@ -12,6 +12,7 @@ fpsClock = pygame.time.Clock()
 pygame.display.set_caption('HSE! STUDENT! LIFE!')
 width = info.current_w
 height = info.current_h
+
 screen = pygame.display.set_mode((width, height), pygame.FULLSCREEN | pygame.SCALED | pygame.HWSURFACE)
 game_started = False
 font = pygame.font.Font('TT Norms Pro Regular.otf', 30)
@@ -66,8 +67,9 @@ use_sprites.add(st3)
 dec_sprites.add(back)
 
 
-def blit_text(surface, text, pos, font, color=pygame.Color('gray')):
+def blit_text(surface, text, pos, font, color=pygame.Color('gray'), size=30):
     words = [word.split(' ') for word in text.splitlines()]
+    font = pygame.font.Font('TT Norms Pro Regular.otf', size)
     space = font.size(' ')[0]
     max_width, max_height = surface.get_size()[0] - 230, surface.get_size()[1]
     x, y = pos
@@ -120,15 +122,15 @@ def level(num):
     dec_sprites.add(back)
     if num in hero.keys():
         hr = hero[num]
-        h1 = Hero(1500, height / 2, hr[0], (1080, height))
+        h1 = Hero(1500 , height / 2, hr[0], (1080 , height))
         dec_sprites.add(h1)
         if len(hr) == 2:
             h2 = Hero(500, height / 2, hr[1], (1080, height))
             dec_sprites.add(h2)
     dlg = BackGround(dg)
     dec_sprites.add(dlg)
-    frw = Button([width - 150, 50], '', font, (0, 0, 0), sk, (240, 60), (num[0], num[1], min(mx[(num[0], num[1])], num[2] + 1)))
-    bck = Button([150, 50], '', font, (0, 0, 0), bc, (240, 60), (num[0], num[1], max(num[2] - 1, 0)))
+    frw = Button([width - 150 , 50 ], '', font, (0, 0, 0), sk, (240 , 60 ), (num[0], num[1], min(mx[(num[0], num[1])], num[2] + 1)))
+    bck = Button([150 , 50], '', font, (0, 0, 0), bc, (240 , 60 ), (num[0], num[1], max(num[2] - 1, 0)))
     exi = Button([width / 2, 60], '', font, (0, 0, 0), ex, (300, 120), (0, 0))
     use_sprites.add(bck)
     use_sprites.add(frw)
@@ -138,6 +140,8 @@ def level(num):
         ch2 = Button([width / 2, height / 2 + 231], '', font, (0, 0, 0), btdn, (width, 605), btn[num[0], num[1], 2][1])
         use_sprites.add(ch1)
         use_sprites.add(ch2)
+        textpos = (width / 2, 110)
+        blit_text(ch1.image, question[num[0], num[1], 1], textpos, font, size=40)
         textpos = (width / 2, 330)
         blit_text(ch1.image, btn[num[0], num[1], 1][0], textpos, font)
         textpos = (width / 2, 80)
@@ -148,9 +152,9 @@ def level(num):
                      (-1, finale[num]))
         use_sprites.add(ch1)
         use_sprites.add(ch2)
-        textpos = (width / 2, 330)
+        textpos = (width / 2, 330 )
         blit_text(ch1.image, 'THe EnD', textpos, font)
-        textpos = (width / 2, 80)
+        textpos = (width / 2, 80 )
         blit_text(ch2.image, 'THe EnD', textpos, font)
 
     textpos = (width * 0.143, height * 0.76)
