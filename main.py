@@ -15,7 +15,6 @@ height = info.current_h
 
 screen = pygame.display.set_mode((width, height), pygame.FULLSCREEN | pygame.SCALED | pygame.HWSURFACE)
 game_started = False
-
 font = pygame.font.Font('TT Norms Pro Regular.otf', 30)
 nm = (0, 0)
 tfon = home
