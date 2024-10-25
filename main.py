@@ -19,6 +19,96 @@ font = pygame.font.Font('TT Norms Pro Regular.otf', 30)
 nm = (0, 0)
 tfon = home
 
+# ПЕРЕКИНУТЬ В const.pe
+def wakeUpgame():
+    c = 0
+    while c!=1000:
+        c+=1
+        print("wakeUp")
+
+def start_race():
+    c = 0
+    while c!=1000:
+        c+=1
+        print("race")
+
+def start_maze():
+    c = 0
+    while c!=1000:
+        c+=1
+        print("maze")
+
+def rhythm_game_start():
+    c = 0
+    while c!=1000:
+        c+=1
+        print("rhythm_game_start")
+
+
+# after_that_message_run_game = set()
+# after_that_message_run_game.update([
+#     (1, 2, 2),
+#     (1, 5, 4),
+#     (1, 3, 5),
+#     (1, 6, 3),
+#     (1, 7, 9),
+#     (1, 4, 2),
+#     (1, 9, 8),
+
+#     (2, 2, 8),
+#     (2, 5, 2),
+#     (2, 7, 4),
+#     (2, 8, 1),
+#     (2, 9, 6),
+#     (2, 13, 2),
+#     (2, 15, 4),
+#     (2, 16, 1),
+#     (2, 25, 7),
+
+#     (3, 4, 4),
+#     (3, 6, 0),
+#     (3, 7, 0),
+#     (3, 8, 0),
+#     (3, 10, 2),
+#     (3, 16, 4),
+#     (3, 16, 5),
+#     (3, 17, 0)
+# ])
+
+obj_messageNum_to_game_func = {
+    (1, 2, 2): wakeUpgame, # 1lvl
+    (1, 5, 4): wakeUpgame,
+    (1, 3, 5): start_maze,
+    (1, 6, 3): start_maze,
+    (1, 7, 9): start_race,
+    (1, 4, 2): rhythm_game_start,
+    (1, 9, 8): rhythm_game_start,
+
+    (2, 2, 8): wakeUpgame, # 2lvl
+    (2, 5, 2): start_race,
+    (2, 7, 4): start_maze,
+    (2, 8, 1): start_race,
+    (2, 9, 6): wakeUpgame,
+    (2, 13, 2): start_race,
+    (2, 15, 4): start_maze,
+    (2, 16, 1): start_race,
+    (2, 25, 7): wakeUpgame,
+
+    (3, 4, 4): start_race, #3lvl
+    (3, 6, 0): rhythm_game_start,
+    (3, 7, 0): rhythm_game_start,
+    (3, 8, 0): rhythm_game_start,
+    (3, 10, 2): wakeUpgame,
+    (3, 16, 4): start_race,
+    (3, 16, 5): start_maze,
+    (3, 17, 0): rhythm_game_start
+
+}
+
+
+#ПЕРЕКИНУТЬ В const.py
+
+
 
 class Button(pygame.sprite.Sprite):
     def __init__(self, pos, text, font, fc, image, size, where):
@@ -134,6 +224,12 @@ def level(num):
     use_sprites.add(bck)
     use_sprites.add(frw)
     use_sprites.add(exi)
+
+    print(f"\nMESSAGE \n {num} \n MESSAGE \n")
+
+    if num in obj_messageNum_to_game_func.keys():
+        obj_messageNum_to_game_func[num]()
+
     if num[2] == mx[num[0], num[1]] and num not in finale.keys():
         ch1 = Button([width / 2, 282], '', font, (0, 0, 0), btup, (width, 475), btn[num[0], num[1], 1][1])
         ch2 = Button([width / 2, height / 2 + 231], '', font, (0, 0, 0), btdn, (width, 605), btn[num[0], num[1], 2][1])
@@ -143,6 +239,7 @@ def level(num):
         blit_text(ch1.image, btn[num[0], num[1], 1][0], textpos, font)
         textpos = (width / 2, 80)
         blit_text(ch2.image, btn[num[0], num[1], 2][0], textpos, font)
+
     if num in finale.keys():
         ch1 = Button([width / 2, 282], '', font, (0, 0, 0), btup, (width, 475), (-1, finale[num]))
         ch2 = Button([width / 2, height / 2 + 231], '', font, (0, 0, 0), btdn, (width, 605),
