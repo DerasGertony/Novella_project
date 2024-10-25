@@ -1,88 +1,19 @@
 import pygame
 import random
+from const import *
+from bus import Bus
+from car import Car
 
 pygame.init()
 
-WIDTH_CAR_WINDOW, HEIGHT_CAR_WINDOW = 600, 800
-FPS = 60
-CAR_WIDTH, CAR_HEIGHT = 50, 100
-BUS_SCALE = 1.44 # во сколько раз автобус больше чем машины
-BUS_WIDTH, BUS_HEIGHT = BUS_SCALE * CAR_WIDTH, BUS_SCALE * CAR_HEIGHT
-BUS_SPEED, CAR_SPEED = 4, 7
-LANE_WIDTH = WIDTH_CAR_WINDOW // 3
-MIN_DISTANCE = 100 # минимальное расстояние между машинами
-WIN = 40 # столько машин надо преодолеть, чтобы выиграть
-
-length_line = HEIGHT_CAR_WINDOW // 10 # длина пунктирной линии
-distance = HEIGHT_CAR_WINDOW // length_line * 3 # расстояние между пунктирными линиями
-frequency = 40 # частота появления машин (чем больше число - тем реже)
-
-RED = (255, 0, 0)
-GREEN = (0, 128, 0)
-WHITE = (255, 255, 255)
-
-screen = pygame.display.set_mode((WIDTH_CAR_WINDOW, HEIGHT_CAR_WINDOW))
-pygame.display.set_caption("Гони")
-
-files_cars = ['images/blue_car.png', 'images/red_car.png']
-
-
-# класс для максима
-class Bus:
-    def __init__(self):
-        self.image = pygame.image.load('images/bus.png')
-        self.image = pygame.transform.scale(self.image, (BUS_WIDTH, BUS_HEIGHT))
-        self.rect = self.image.get_rect(center=(WIDTH_CAR_WINDOW // 2, HEIGHT_CAR_WINDOW - BUS_HEIGHT - 10))
-        self.lane = 1
-        self.target_x = self.rect.x
-
-    def move(self):
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT] and self.lane > 0:
-            self.lane -= 1
-        if keys[pygame.K_RIGHT] and self.lane < 2:
-            self.lane += 1
-
-        self.target_x = self.lane * LANE_WIDTH + (LANE_WIDTH - BUS_WIDTH) // 2
-
-        # насколько быстро автобус меняет свое местоположение по иксу
-        if self.rect.x + BUS_SPEED < self.target_x:
-            self.rect.x += BUS_SPEED
-        elif self.rect.x - BUS_SPEED > self.target_x:
-            self.rect.x -= BUS_SPEED
-        else:
-            self.rect.x = self.target_x
-
-
-    def draw(self):
-        screen.blit(self.image, self.rect)
-
-
-# то от чего уворачиваемся
-class Car:
-    def __init__(self, lane):
-        koef = random.randint(0, 1)
-        self.image = pygame.image.load(files_cars[koef])
-        if koef == 0:
-            self.image = pygame.transform.rotozoom(self.image, 0, 0.12)
-        else:
-            self.image = pygame.transform.rotozoom(self.image, 0, 0.14)
-
-        x_position = lane * LANE_WIDTH + LANE_WIDTH // 2
-
-        self.rect = self.image.get_rect(center=(x_position, -CAR_HEIGHT))  # спавн как бы за экраном поэтому минус
-        self.lane = lane
-
-    def update(self):
-        self.rect.y += CAR_SPEED  # скорость машин, чтобы повысить сложность, можем увеличить этот параметр или фпс (переменная)
-
-    def draw(self):
-        screen.blit(self.image, self.rect)
-
 
 def start_race():
+    screen = pygame.display.set_mode((WIDTH_CAR_WINDOW, HEIGHT_CAR_WINDOW))
+    pygame.display.set_caption("Гони")
+
+    files_cars = ['images/blue_car.png', 'images/red_car.png']
     clock = pygame.time.Clock()
-    bus = Bus()
+    bus = Bus(screen)
     cars = []
     count_cars = 0
 
@@ -102,7 +33,7 @@ def start_race():
             if (all(abs(car.rect.y + CAR_HEIGHT) >= MIN_DISTANCE for car in cars if car.lane == lane_choice)
                     and count_cars < WIN): # для условия победы
                 count_cars += 1 # количество машин
-                cars.append(Car(lane_choice))
+                cars.append(Car(lane_choice, files_cars, screen))
 
         for car in cars[:]:
             car.update()
