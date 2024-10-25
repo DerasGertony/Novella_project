@@ -200,3 +200,5 @@ while True:
     use_sprites.draw(screen)
     pygame.display.flip()
     clock.tick(30)
+
+#WE ARE PROGRAMMERS TEAM WE ENTIRELY DEAD AFTER THIS WORK ITS SO HARD TO MAKE IT LOOK EXACTLY AS WE WANT IT TO BE/ SAVE OUR SOULS
