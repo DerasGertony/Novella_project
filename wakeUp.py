@@ -10,7 +10,7 @@ def wakeUp(screen, window_w, window_h):
     #screen = pygame.display.set_mode((const.WIDTH_WAKEUP_WINDOW, const.HEIGHT_WAKEUP_WINDOW))
     clock = pygame.time.Clock()
 
-    clicks = 5
+    clicks = 15
     time_minusProgress = set()
     time_minusProgress_5_sec = set()
 
@@ -44,7 +44,6 @@ def wakeUp(screen, window_w, window_h):
         screen.blit(text_message, (window_w*0.3, window_h*0.8))
 
         progress.draw(clicks*5)
-        clicks = 100
 
         pygame.display.update()
 

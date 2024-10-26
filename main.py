@@ -162,10 +162,10 @@ def level(num):
     dec_sprites.add(back)
     if num in hero.keys():
         hr = hero[num]
-        h1 = Hero(1500 , height / 2, hr[0], (1080 , height))
+        h1 = Hero(width / 5 * 3, height / 2, hr[0], (1080 , height))
         dec_sprites.add(h1)
         if len(hr) == 2:
-            h2 = Hero(500, height / 2, hr[1], (1080, height))
+            h2 = Hero(width / 2, height / 2, hr[1], (1080, height))
             dec_sprites.add(h2)
     dlg = BackGround(dg)
     dec_sprites.add(dlg)
@@ -176,9 +176,8 @@ def level(num):
     use_sprites.add(frw)
     use_sprites.add(exi)
 
-    # if num in obj_messageNum_to_game_func.keys():
-    #     obj_messageNum_to_game_func[num](screen, width, height)
-    obj_messageNum_to_game_func[(1, 3, 5)](screen, width, height)
+    if num in obj_messageNum_to_game_func.keys():
+        obj_messageNum_to_game_func[num](screen, width, height)
 
     if num[2] == mx[num[0], num[1]] and num not in finale.keys():
         ch1 = Button([width / 2, height * 0.2], '', font, (0, 0, 0), btup, (width, height * 0.495),

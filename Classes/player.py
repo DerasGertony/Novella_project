@@ -40,7 +40,7 @@ class Player:
         self.y += dy
 
     def movement(self):
-        player_speed = 1
+        player_speed = 0.5
         sin_a = math.sin(self.angle) * self.freeze
         cos_a = math.cos(self.angle) * self.freeze
         keys = pygame.key.get_pressed()

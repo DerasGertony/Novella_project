@@ -6,7 +6,8 @@ import Classes.HealthPointClass as HealthPointClass
 pygame.init()
 
 def rhythm_game_start(screen, window_w, window_h):
-    healt_points, wait_new_msg, wait_answer, rythm_line = 5, 3, 5, ["RIGHT", "LEFT", "DOWN", "DOWN", "UP", "DOWN", "RIGHT", "LEFT"]
+    healt_points, wait_new_msg, wait_answer, rythm_line = 3, 1, 2, ["RIGHT", "LEFT", "DOWN", "DOWN", "UP", "DOWN", "RIGHT", "LEFT", 
+                                                                    "RIGHT", "LEFT", "DOWN", "DOWN", "UP", "DOWN", "RIGHT", "LEFT"]
 
     #screen = pygame.display.set_mode((const.WIDTH_RYTHM_WINDOW, const.HEIGHT_RYTHM_WINDOW))
     clock = pygame.time.Clock()

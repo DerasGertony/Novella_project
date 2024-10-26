@@ -9,10 +9,7 @@ delta_time = 100
 
 # произвольно
 
-WIDTH_MAZE_WINDOW, HEIGHT_MAZE_WINDOW = 1200, 800
-HALF_WIDTH = WIDTH_MAZE_WINDOW // 2
-HALF_HEIGHT = HEIGHT_MAZE_WINDOW // 2
-FPS = 60
+FPS = 30
 TILE = 100
 MAP_SCALE = 5
 MAP_TILE = TILE // MAP_SCALE
@@ -50,7 +47,7 @@ cur_time = time.time_ns()
 
 def freeze():
     global cur_time
-    delta = (time.time_ns() - cur_time) / 1000000000
+    delta = (time.time_ns() - cur_time) / 10000000000
     cur_time = time.time_ns()
     return delta
 
@@ -60,9 +57,9 @@ def freeze():
 CAR_WIDTH, CAR_HEIGHT = 100, 200
 BUS_SCALE = 1.3 # во сколько раз автобус больше чем машины
 BUS_WIDTH, BUS_HEIGHT = BUS_SCALE * CAR_WIDTH, BUS_SCALE * CAR_HEIGHT
-BUS_SPEED, CAR_SPEED = 4, 7
+BUS_SPEED, CAR_SPEED = 10, 16
 MIN_DISTANCE = 140 # минимальное расстояние между машинами
-WIN = 40 # столько машин надо преодолеть, чтобы выиграть
+WIN = 50 # столько машин надо преодолеть, чтобы выиграть
 
 frequency = 40 # частота появления машин (чем больше число - тем реже)
 

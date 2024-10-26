@@ -1387,7 +1387,7 @@ backs = {
     (3,4,5):math,
 (3,9,5):shkura,
 (3,10,2): DesertedDarknessStreet,
-(3,10,4): DesertedDarknessStreet,
+(3,10,4): lake,
 (3,12,7): bus,
 (3,16,5):math,
 }

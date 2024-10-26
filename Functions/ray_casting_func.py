@@ -9,7 +9,7 @@ def ray_casting(sc, player_pos, player_angle, textures, window_w, window_h):
     xm, ym = map.mapping(ox, oy)
     cur_angle = player_angle - HALF_FOV
 
-    SCALE = window_w // NUM_RAYS  
+    SCALE = window_w // NUM_RAYS
     for ray in range(NUM_RAYS):
         sin_a = math.sin(cur_angle)
         cos_a = math.cos(cur_angle)

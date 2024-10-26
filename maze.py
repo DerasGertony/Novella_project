@@ -25,10 +25,10 @@ def start_maze(screen, window_w, window_h):
             if event.type == pygame.QUIT:
                 pygame.mouse.set_visible(True)
                 is_maze_running = False
-            if event.type == KEYDOWN:
-                if event.key == K_ESCAPE:
-                    pygame.mouse.set_visible(True)
-                    is_maze_running = False
+            # if event.type == KEYDOWN:
+            #   if event.key == K_ESCAPE:
+            #       pygame.mouse.set_visible(True)
+            #       is_maze_running = False
         # проверка на прохождение, коэффициенты зависимо от карты
         ox, oy = player.pos
         if TILE * 2 <= ox <= TILE * 3 and TILE * 12.5 <= oy <= TILE * 14:
