@@ -4,15 +4,15 @@ from const import *
 from Classes.draw import Draw
 from Classes.player import Player
 
-
 # чтобы менять сложность, будем изменять размер карты в map и время на прохождение
 # инициализация
 pygame.init()
 
+
 # запуск
 def start_maze(screen, window_w, window_h):
-    #screen = pygame.display.set_mode((width, height), pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.FULLSCREEN)
-    #sc_map = pygame.Surface((WIDTH_MAZE_WINDOW // MAP_SCALE, HEIGHT_MAZE_WINDOW // MAP_SCALE))
+    # screen = pygame.display.set_mode((width, height), pygame.HWSURFACE | pygame.DOUBLEBUF | pygame.FULLSCREEN)
+    # sc_map = pygame.Surface((WIDTH_MAZE_WINDOW // MAP_SCALE, HEIGHT_MAZE_WINDOW // MAP_SCALE))
     pygame.mouse.set_visible(False)
     clock = pygame.time.Clock()
     player = Player()

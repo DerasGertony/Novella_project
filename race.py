@@ -8,12 +8,12 @@ pygame.init()
 
 
 def start_race(screen, window_w, window_h):
-    #screen = pygame.display.set_mode((WIDTH_CAR_WINDOW, HEIGHT_CAR_WINDOW))
+    # screen = pygame.display.set_mode((WIDTH_CAR_WINDOW, HEIGHT_CAR_WINDOW))
     pygame.display.set_caption("Гони")
     LANE_WIDTH = window_w // 3
 
-    length_line = window_h // 5 # длина пунктирной линии
-    distance = length_line # расстояние между пунктирными линиями
+    length_line = window_h // 5  # длина пунктирной линии
+    distance = length_line  # расстояние между пунктирными линиями
 
     files_cars = ['images/blue_car.png', 'images/red_car.png']
     clock = pygame.time.Clock()
@@ -35,8 +35,8 @@ def start_race(screen, window_w, window_h):
         if random.randint(1, frequency) == 1:
             lane_choice = random.randint(0, 2)
             if (all(abs(car.rect.y + CAR_HEIGHT) >= MIN_DISTANCE for car in cars if car.lane == lane_choice)
-                    and count_cars < WIN): # для условия победы
-                count_cars += 1 # количество машин
+                    and count_cars < WIN):  # для условия победы
+                count_cars += 1  # количество машин
                 cars.append(Car(lane_choice, files_cars, screen, LANE_WIDTH))
 
         for car in cars[:]:
@@ -57,7 +57,7 @@ def start_race(screen, window_w, window_h):
             pygame.draw.line(screen, WHITE, [window_w // 3 * 2, i - distance],
                              [window_w // 3 * 2, i - distance + length_line], 15)
 
-        line_position += 10 # обязательно число, которое делит 10 без остатка
+        line_position += 10  # обязательно число, которое делит 10 без остатка
         if line_position > distance:
             line_position = -length_line
 
@@ -70,4 +70,3 @@ def start_race(screen, window_w, window_h):
 
         if count_cars == WIN and not cars:
             break
-

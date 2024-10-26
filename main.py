@@ -27,7 +27,7 @@ tfon = home
 # ПЕРЕКИНУТЬ В const.pe
 
 obj_messageNum_to_game_func = {
-    (1, 2, 2): wakeUp.wakeUp, # 1lvl
+    (1, 2, 2): wakeUp.wakeUp,  # 1lvl
     (1, 5, 4): wakeUp.wakeUp,
     (1, 3, 5): maze.start_maze,
     (1, 6, 3): maze.start_maze,
@@ -35,7 +35,7 @@ obj_messageNum_to_game_func = {
     (1, 4, 2): RhythmGame.rhythm_game_start,
     (1, 9, 8): RhythmGame.rhythm_game_start,
 
-    (2, 2, 8): wakeUp.wakeUp, # 2lvl
+    (2, 2, 8): wakeUp.wakeUp,  # 2lvl
     (2, 5, 2): race.start_race,
     (2, 7, 4): maze.start_maze,
     (2, 8, 1): race.start_race,
@@ -45,7 +45,7 @@ obj_messageNum_to_game_func = {
     (2, 16, 1): race.start_race,
     (2, 25, 7): wakeUp.wakeUp,
 
-    (3, 4, 4): race.start_race, #3lvl
+    (3, 4, 4): race.start_race,  # 3lvl
     (3, 6, 0): RhythmGame.rhythm_game_start,
     (3, 7, 0): RhythmGame.rhythm_game_start,
     (3, 8, 0): RhythmGame.rhythm_game_start,
@@ -57,8 +57,7 @@ obj_messageNum_to_game_func = {
 }
 
 
-#ПЕРЕКИНУТЬ В const.py
-
+# ПЕРЕКИНУТЬ В const.py
 
 
 class Button(pygame.sprite.Sprite):
@@ -162,15 +161,15 @@ def level(num):
     dec_sprites.add(back)
     if num in hero.keys():
         hr = hero[num]
-        h1 = Hero(width / 5 * 3, height / 2, hr[0], (1080 , height))
+        h1 = Hero(width / 5 * 3, height / 2, hr[0], (1080, height))
         dec_sprites.add(h1)
         if len(hr) == 2:
             h2 = Hero(width / 3, height / 2, hr[1], (1080, height))
             dec_sprites.add(h2)
     dlg = BackGround(dg)
     dec_sprites.add(dlg)
-    frw = Button([width - 150 , 50 ], '', font, (0, 0, 0), sk, (240 , 60 ), (num[0], num[1], min(mx[(num[0], num[1])], num[2] + 1)))
-    bck = Button([150 , 50], '', font, (0, 0, 0), bc, (240 , 60 ), (num[0], num[1], max(num[2] - 1, 0)))
+    frw = Button([width - 150, 50], '', font, (0, 0, 0), sk, (240, 60), (num[0], num[1], min(mx[(num[0], num[1])], num[2] + 1)))
+    bck = Button([150, 50], '', font, (0, 0, 0), bc, (240, 60), (num[0], num[1], max(num[2] - 1, 0)))
     exi = Button([width / 2, 60], '', font, (0, 0, 0), ex, (300, 120), (0, 0))
     use_sprites.add(bck)
     use_sprites.add(frw)
@@ -213,7 +212,7 @@ temp = 0
 clock = pygame.time.Clock()
 while True:
     screen.fill((0, 0, 0))
-    
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
