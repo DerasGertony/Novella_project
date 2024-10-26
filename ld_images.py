@@ -60,7 +60,7 @@ kitchen = pygame.image.load('Pictures/backgrounds/home/kitchen.png')
 phone = pygame.image.load('Pictures/backgrounds/home/phone.png')
 mainbg = pygame.image.load('Pictures/backgrounds/home/main_back.png')
 magas = pygame.image.load('Pictures/backgrounds/пятерочка.png')
-kond= pygame.image.load('Pictures/backgrounds/kond.jpg')
+kond = pygame.image.load('Pictures/backgrounds/kond.jpg')
 tt = pygame.image.load('Pictures/backgrounds/phone/tt.jpg')
 # OUTSIDE
 CrowdedModernStreet = pygame.image.load('Pictures/backgrounds/outside/3.jpg')
