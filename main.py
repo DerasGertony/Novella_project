@@ -165,7 +165,7 @@ def level(num):
         h1 = Hero(width / 5 * 3, height / 2, hr[0], (1080 , height))
         dec_sprites.add(h1)
         if len(hr) == 2:
-            h2 = Hero(width / 2, height / 2, hr[1], (1080, height))
+            h2 = Hero(width / 3, height / 2, hr[1], (1080, height))
             dec_sprites.add(h2)
     dlg = BackGround(dg)
     dec_sprites.add(dlg)
